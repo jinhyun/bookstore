@@ -21,11 +21,25 @@ public interface UserMapper {
     public int saveUser(User user);
 
     /**
-     * 사용자를 조회한다.
+     * uid로 사용자를 조회한다.
      * @param userUid
      * @return
      */
     User findUserByUserUid(int userUid);
+
+    /**
+     * 이메일로 사용자를 조회한다.
+     * @param email
+     * @return
+     */
+    User findUserByEmail(String email);
+
+    /**
+     * 로그인 사용자를 정보를 조회한다.
+     * @param email
+     * @return
+     */
+    User findLoginUserByEmail(String email);
 
     /**
      * 사용자를 수정한다.

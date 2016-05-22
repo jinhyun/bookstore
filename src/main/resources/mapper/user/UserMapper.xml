@@ -9,28 +9,53 @@
 
     <!-- 사용자를 저장한다. -->
     <insert id="saveUser" parameterType="User" useGeneratedKeys="true" keyProperty="userUid" keyColumn="userUid">
-        INSERT INTO USER (name, email)
-        VALUES (#{name}, #{email})
+        INSERT INTO USER
+          (name, email, password, role)
+        VALUES
+          (#{name}, #{email}, #{password}, #{role})
         <selectKey keyProperty="userUid" resultType="int" order="AFTER">
             SELECT LAST_INSERT_ID();
         </selectKey>
     </insert>
 
-    <!-- 사용자를 조회한다. -->
+    <!-- uid로 사용자를 조회한다. -->
     <select id="findUserByUserUid" resultType="User">
         SELECT
-         USER_UID as userUid,
-         NAME as name,
-         EMAIL as email
+          USER_UID as userUid,
+          NAME as name,
+          EMAIL as email,
+          PASSWORD AS password,
+          ROLE AS role
         FROM USER WHERE USER_UID = #{userUid}
+    </select>
+
+    <!-- 이메일로 사용자를 조회한다. -->
+    <select id="findUserByEmail" resultType="User">
+        SELECT
+          USER_UID as userUid,
+          NAME as name,
+          EMAIL as email,
+          PASSWORD AS password,
+          ROLE AS role
+        FROM USER
+        WHERE EMAIL = #{email}
+    </select>
+
+    <!-- 로그인 사용자를 정보를 조회한다. -->
+    <select id="findLoginUserByEmail" resultType="User">
+        SELECT
+          EMAIL as email,
+          PASSWORD AS password
+        FROM USER
+        WHERE EMAIL = #{email}
     </select>
 
     <!-- 사용자를 수정한다. -->
     <update id="updateUser" parameterType="User">
         UPDATE USER
         SET
-        NAME = #{name},
-        EMAIL = #{email}
+          NAME = #{name},
+          EMAIL = #{email}
         WHERE USER_UID = #{userUid}
     </update>
 
