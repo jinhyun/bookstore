@@ -6,7 +6,7 @@
         INSERT INTO BOARD
           (SUBJECT, CONTENTS, AUTHOR, REG_DATE)
         VALUES
-          (#{subject}, #{contents}, #{author}, #{regDate})
+          (#{boardSubject}, #{boardContents}, #{boardAuthor}, #{boardRegDate})
 
         <selectKey keyProperty="boardUid" resultType="int" order="AFTER">
             SELECT LAST_INSERT_ID();
@@ -14,6 +14,12 @@
     </insert>
 
     <select id="findAllBoards" resultType="Board">
-        SELECT * FROM BOARD
+        SELECT
+         BOARD_UID as boardUid,
+         SUBJECT as boardSubject,
+         CONTENTS as boardContents,
+         AUTHOR as boardAuthor,
+         REG_DATE as boardRegDate
+        FROM BOARD
     </select>
 </mapper>

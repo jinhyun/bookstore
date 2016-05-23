@@ -1,5 +1,6 @@
 package com.bookstore.board.controller;
 
+import com.bookstore.board.domain.Board;
 import com.bookstore.board.service.BoardService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,5 +22,16 @@ public class BoardController {
         LOGGER.debug("get boards page");
         model.addAttribute("boards", boardService.getAllBoards());
         return "board/boards";
+    }
+
+    @RequestMapping(value = "/board/create", method = RequestMethod.GET)
+    public String getBoardPage() {
+        return "board/board_create";
+    }
+
+    @RequestMapping(value = "/board/create", method = RequestMethod.POST)
+    public String createBoard(Board board) {
+        int savedRow = boardService.saveBoard(board);
+        return "redirect:/boards";
     }
 }

@@ -4,10 +4,10 @@ import java.util.Date;
 
 public class Board {
     private int boardUid;
-    private String subject;
-    private String contents;
-    private String author;
-    private Date regDate;
+    private String boardSubject;
+    private String boardContents;
+    private String boardAuthor;
+    private Date boardRegDate;
 
     public int getBoardUid() {
         return boardUid;
@@ -17,35 +17,35 @@ public class Board {
         this.boardUid = boardUid;
     }
 
-    public String getSubject() {
-        return subject;
+    public String getBoardSubject() {
+        return boardSubject;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setBoardSubject(String boardSubject) {
+        this.boardSubject = boardSubject;
     }
 
-    public String getContents() {
-        return contents;
+    public String getBoardContents() {
+        return boardContents;
     }
 
-    public void setContents(String contents) {
-        this.contents = contents;
+    public void setBoardContents(String boardContents) {
+        this.boardContents = boardContents;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getBoardAuthor() {
+        return boardAuthor;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setBoardAuthor(String boardAuthor) {
+        this.boardAuthor = boardAuthor;
     }
 
-    public Date getRegDate() {
-        return regDate;
+    public Date getBoardRegDate() {
+        return boardRegDate;
     }
 
-    public void setRegDate(Date regDate) {
-        this.regDate = regDate;
+    public void setBoardRegDate(Date boardRegDate) {
+        this.boardRegDate = boardRegDate;
     }
 }

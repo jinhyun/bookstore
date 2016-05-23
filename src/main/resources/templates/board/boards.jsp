@@ -30,10 +30,10 @@
                 <c:forEach var="board" items="${boards}" varStatus="status">
                 <tr style="border: 1px solid;">
                     <td id="boardSubject_${status.index}" name="boardSubject_${status.index}">
-                        <c:out value="${board.subject}"/>
+                        <c:out value="${board.boardSubject}"/>
                     </td>
                     <td id="boardAuthor_${status.index}" name="boardAuthor_${status.index}">
-                        <c:out value="${board.author}"/>
+                        <c:out value="${board.boardAuthor}"/>
                     </td>
                 </tr>
                 </c:forEach>

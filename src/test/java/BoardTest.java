@@ -52,8 +52,8 @@ public class BoardTest {
 
         List<Board> boards = boardService.getAllBoards();
         assertThat(boards.size(), is(3));
-        assertThat(boards.get(0).getAuthor(), notNullValue());
-        assertThat(boards.get(1).getAuthor(), notNullValue());
-        assertThat(boards.get(2).getAuthor(), notNullValue());
+        assertThat(boards.get(0).getBoardAuthor(), notNullValue());
+        assertThat(boards.get(1).getBoardAuthor(), notNullValue());
+        assertThat(boards.get(2).getBoardAuthor(), notNullValue());
     }
 }
