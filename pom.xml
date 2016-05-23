@@ -32,6 +32,9 @@
         <!-- http://www.mybatis.org/spring/ -->
         <!-- http://www.mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/ -->
         <mybatis-spring-boot.version>1.1.1</mybatis-spring-boot.version>
+
+        <!-- JSTL Version -->
+        <jstl.version>1.2</jstl.version>
     </properties>
 
     <dependencies>
@@ -53,6 +56,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>
+        </dependency>
+
+        <!-- JSTL -->
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${jstl.version}</version>
         </dependency>
 
         <!-- Mysql -->

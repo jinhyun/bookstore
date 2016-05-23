@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
-<mapper namespace="mapper.user.UserMapper">
+<mapper namespace="com.bookstore.user.mapper.UserMapper">
     <!-- 전체 사용자 목록을 조회한다. -->
     <select id="findAllUser" resultType="User">
         SELECT * FROM USER

@@ -5,8 +5,10 @@
 <configuration>
     <typeAliases>
         <package name="com.bookstore.user.domain"/>
+        <package name="com.bookstore.board.domain"/>
     </typeAliases>
     <mappers>
         <mapper resource="mapper/user/UserMapper.xml"/>
+        <mapper resource="mapper/board/BoardMapper.xml"/>
     </mappers>
 </configuration>
