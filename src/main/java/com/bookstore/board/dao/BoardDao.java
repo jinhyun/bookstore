@@ -22,4 +22,9 @@ public class BoardDao implements BoardMapper{
     public List<Board> getAllBoards() {
         return sqlSession.selectList("findAllBoards");
     }
+
+    @Override
+    public Board getBoardByBoardUid(int boardUid) {
+        return sqlSession.selectOne("findByBoardUid", boardUid);
+    }
 }

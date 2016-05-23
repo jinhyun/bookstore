@@ -21,4 +21,8 @@ public class BoardService {
     public int saveBoard(Board board) {
         return boardDao.saveBoard(board);
     }
+
+    public Board getBoardByBoardUid(int boardUid) {
+        return boardDao.getBoardByBoardUid(boardUid);
+    }
 }

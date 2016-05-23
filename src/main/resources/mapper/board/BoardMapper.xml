@@ -22,4 +22,15 @@
          REG_DATE as boardRegDate
         FROM BOARD
     </select>
+
+    <select id="findByBoardUid" parameterType="int" resultType="Board">
+        SELECT
+         BOARD_UID as boardUid,
+         SUBJECT as boardSubject,
+         CONTENTS as boardContents,
+         AUTHOR as boardAuthor,
+         REG_DATE as boardRegDate
+        FROM BOARD
+        WHERE BOARD_UID = #{boardUid}
+    </select>
 </mapper>

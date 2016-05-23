@@ -45,6 +45,12 @@ public class BoardTest {
     }
 
     @Test
+    public void getBoardByBoardUid() {
+        Board board = boardService.getBoardByBoardUid(1);
+        assertThat(board.getBoardSubject(), is(notNullValue()));
+    }
+
+    @Test
     public void getAllBoards() {
 //        for (Board board : boards) {
 //            int savedRow = boardService.saveBoard(board);
