@@ -1,0 +1,9 @@
+#createCommentDiv {
+    margin-top: 10px;
+}
+
+#createCommentTextArea {
+    /* 크기 수정불가 */
+    resize: none;
+    wrap:hard;
+}

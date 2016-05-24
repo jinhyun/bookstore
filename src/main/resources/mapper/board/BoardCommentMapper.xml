@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bookstore.board.mapper.BoardCommentMapper">
+    <insert id="saveBoardComment" parameterType="BoardComment" useGeneratedKeys="true" keyProperty="boardCommentUid" keyColumn="boardCommentUid">
+        INSERT INTO BOARD_COMMENT
+        (CONTENTS, USER_UID, USER_NAME, REG_DATE)
+        VALUES
+        (#{boardCommentContents}, #{boardCommentUserUid}, #{boardCommentUserName}, #{boardCommentRegDate})
+        <selectKey keyProperty="boardCommentUid" resultType="int" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+</mapper>

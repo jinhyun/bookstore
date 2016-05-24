@@ -35,13 +35,6 @@ public interface UserMapper {
     User findUserByEmail(String email);
 
     /**
-     * 로그인 사용자를 정보를 조회한다.
-     * @param email
-     * @return
-     */
-    User findLoginUserByEmail(String email);
-
-    /**
      * 사용자를 수정한다.
      * @param user
      * @return 수정한 개수

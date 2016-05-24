@@ -10,5 +10,6 @@
     <mappers>
         <mapper resource="mapper/user/UserMapper.xml"/>
         <mapper resource="mapper/board/BoardMapper.xml"/>
+        <mapper resource="mapper/board/BoardCommentMapper.xml"/>
     </mappers>
 </configuration>

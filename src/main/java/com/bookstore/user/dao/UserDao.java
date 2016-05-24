@@ -34,11 +34,6 @@ public class UserDao implements UserMapper{
     }
 
     @Override
-    public User findLoginUserByEmail(String email) {
-        return sqlSession.selectOne("findLoginUserByEmail", email);
-    }
-
-    @Override
     public int updateUser(User user) {
         return sqlSession.update("updateUser", user);
     }
