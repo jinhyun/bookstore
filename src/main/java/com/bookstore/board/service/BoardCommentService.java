@@ -7,8 +7,8 @@ import com.bookstore.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class BoardCommentService {
@@ -34,5 +34,13 @@ public class BoardCommentService {
         }
 
         return boardComment;
+    }
+
+    public List<BoardComment> getBoardCommentsByBoardUid(int boardUid) {
+        if (boardUid < 1) {
+            throw new IllegalArgumentException("boardUid must not be null");
+        }
+
+        return boardCommentDao.getBoardCommentsByBoardUid(boardUid);
     }
 }

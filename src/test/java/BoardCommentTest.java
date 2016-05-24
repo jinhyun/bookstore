@@ -41,4 +41,12 @@ public class BoardCommentTest {
 
         assertThat(totalSavedRod, is(2));
     }
+
+    @Test
+    public void getBoardComments() {
+        createMockBoardComments.createBoardComments(createMockBoardComments.getMockBoardComments());
+
+        List<BoardComment> boardComments = boardCommentService.getBoardCommentsByBoardUid(1);
+        assertThat(boardComments.size(), is(2));
+    }
 }

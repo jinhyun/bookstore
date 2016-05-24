@@ -6,6 +6,7 @@ var boardCommentModule = function() {
   };
 
   bind();
+  getBoardComments();
 };
 
 var createBoardComment = function() {
@@ -25,6 +26,25 @@ var createBoardComment = function() {
     async: false,
     success: function(resultBoardComment) {
       addBoardComment(resultBoardComment);
+    },
+    error: function() {
+
+    }
+  });
+};
+
+var getBoardComments = function() {
+  var boardUid = $('#boardDetailForm').data("board-uid");
+
+  $.ajax({
+    url: "/boardComments/" + boardUid,
+    method: 'get',
+    contentType: "application/json",
+    async: false,
+    success: function(boardComments) {
+      for (var i = 0; i < boardComments.length;  i++){
+        addBoardComment(boardComments[i]);
+      }
     },
     error: function() {
 

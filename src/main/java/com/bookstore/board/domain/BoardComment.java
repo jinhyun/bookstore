@@ -8,6 +8,7 @@ public class BoardComment {
     private int boardCommentUserUid;
     private String boardCommentUserName;
     private Date boardCommentRegDate;
+    private int boardUid;
 
     public int getBoardCommentUid() {
         return boardCommentUid;
@@ -47,5 +48,13 @@ public class BoardComment {
 
     public void setBoardCommentRegDate(Date boardCommentRegDate) {
         this.boardCommentRegDate = boardCommentRegDate;
+    }
+
+    public int getBoardUid() {
+        return boardUid;
+    }
+
+    public void setBoardUid(int boardUid) {
+        this.boardUid = boardUid;
     }
 }

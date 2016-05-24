@@ -38,7 +38,7 @@ public class BoardController {
 
     @RequestMapping(value = "/board/{boardUid}", method = RequestMethod.GET)
     public String getBoardPage(@PathVariable int boardUid, Model model) {
-        model.addAttribute(boardService.getBoardByBoardUid(boardUid));
+        model.addAttribute("board", boardService.getBoardByBoardUid(boardUid));
         return "board/board";
     }
 }

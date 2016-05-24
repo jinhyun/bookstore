@@ -4,11 +4,23 @@
 <mapper namespace="com.bookstore.board.mapper.BoardCommentMapper">
     <insert id="saveBoardComment" parameterType="BoardComment" useGeneratedKeys="true" keyProperty="boardCommentUid" keyColumn="boardCommentUid">
         INSERT INTO BOARD_COMMENT
-        (CONTENTS, USER_UID, USER_NAME, REG_DATE)
+        (CONTENTS, USER_UID, USER_NAME, REG_DATE, BOARD_UID)
         VALUES
-        (#{boardCommentContents}, #{boardCommentUserUid}, #{boardCommentUserName}, #{boardCommentRegDate})
+        (#{boardCommentContents}, #{boardCommentUserUid}, #{boardCommentUserName}, #{boardCommentRegDate}, #{boardUid})
         <selectKey keyProperty="boardCommentUid" resultType="int" order="AFTER">
             SELECT LAST_INSERT_ID()
         </selectKey>
     </insert>
+
+    <select id="findBoardCommentsByBoardUid" parameterType="int" resultType="BoardComment">
+        SELECT
+            BOARD_COMMENT_UID as boardCommentUid,
+            CONTENTS as boardCommentContents,
+            USER_UID as boardCommentUseruid,
+            USER_NAME as boardCommentUserName,
+            REG_DATE as boardCommentRegDate,
+            BOARD_UID as boardUid
+        FROM BOARD_COMMENT
+        WHERE BOARD_UID = #{boardUid}
+    </select>
 </mapper>
