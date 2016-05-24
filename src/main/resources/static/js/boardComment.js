@@ -15,7 +15,8 @@ var createBoardComment = function() {
   method = 'post';
 
   boardComment = {
-    boardCommentContents : $("#createCommentTextArea").val()
+    boardCommentContents : $("#createCommentTextArea").val(),
+    boardUid : $('#boardDetailForm').data("board-uid")
   };
 
   $.ajax({
