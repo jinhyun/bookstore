@@ -1,9 +1,9 @@
 var boardsModule = function() {
   var bind = function() {
-    var boardSubjects = $("td[name*=boardSubject]");
+    var boardSubjectElements = $("td[name*=boardSubjectTd]");
 
-    for (var i = 0; i < boardSubjects.length; i++) {
-      $("#" + boardSubjects[i].id).bind("click", function(){
+    for (var i = 0; i < boardSubjectElements.length; i++) {
+      $("#" + boardSubjectElements[i].id).bind("click", function(){
         viewBoard($(this).data("board-uid"));
       });
     }

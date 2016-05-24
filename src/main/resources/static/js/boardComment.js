@@ -61,28 +61,28 @@ var addBoardComment = function(boardComment) {
   commentsRows = parseInt(viewCommentDivElement.dataset.boardCommentsRows) + 1;
 
   commentElement = document.createElement("div");
-  commentElement.id = "comment_" + commentsRows;
-  commentElement.name = "comment_" + commentsRows;
+  commentElement.id = "commentDiv_" + commentsRows;
+  commentElement.name = "commentDiv_" + commentsRows;
   commentElement.className = "commentDiv";
   commentElement.dataset.boardCommentUid = boardComment.boardCommentUid;
 
   commentUserNameElement = document.createElement("div");
-  commentUserNameElement.id = "commentName_" + commentsRows;
-  commentUserNameElement.name = "commentName_" + commentsRows;
+  commentUserNameElement.id = "commentUserNameDiv_" + commentsRows;
+  commentUserNameElement.name = "commentUserNameDiv_" + commentsRows;
   commentUserNameElement.innerText = boardComment.boardCommentUserName;
-  commentUserNameElement.className = "commentNameDiv";
+  commentUserNameElement.className = "commentUserNameDiv";
 
   commentRegDateElement = document.createElement("div");
   commentRegDate = new Date(boardComment.boardCommentRegDate);
-  commentRegDateElement.id = "commentRegDate_" + commentsRows;
-  commentRegDateElement.name = "commentRegDate_" + commentsRows;
+  commentRegDateElement.id = "commentRegDateDiv_" + commentsRows;
+  commentRegDateElement.name = "commentRegDateDiv_" + commentsRows;
   commentRegDateElement.innerText =
     commentRegDate.getFullYear() + "." + (commentRegDate.getMonth()+1) + "." + commentRegDate.getDate() + " " +
     commentRegDate.getHours() + ":" + commentRegDate.getMinutes();
 
   commentContentsElement = document.createElement("div");
-  commentContentsElement.id = "commentContents_" + commentsRows;
-  commentContentsElement.name = "commentContents_" + commentsRows;
+  commentContentsElement.id = "commentContentsDiv_" + commentsRows;
+  commentContentsElement.name = "commentContentsDiv_" + commentsRows;
   commentContentsElement.innerText = boardComment.boardCommentContents;
 
   commentElement.appendChild(commentUserNameElement);

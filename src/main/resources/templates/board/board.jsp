@@ -24,11 +24,11 @@
         </form>
 
         <div id="viewCommentDiv" data-board-comments-rows="0">
-            <h4>댓글</h4>
+            <h4 class="viewCommentH4">댓글</h4>
         </div>
 
-        <div id="createCommentDiv">
-            <textarea id="createCommentTextArea" name="createCommentTextArea" cols="50" rows="4">멋져요</textarea>
+        <div id="createCommentDiv" class="createCommentDiv">
+            <textarea id="createCommentTextArea" name="createCommentTextArea" class="createCommentTextArea" cols="50" rows="4">멋져요</textarea>
             <button id="createCommentBtn">등록</button>
         </div>
     </div>

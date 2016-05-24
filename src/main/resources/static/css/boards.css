@@ -1,16 +1,16 @@
-#boardsTable table {
+.boardsTable {
     border-collapse: collapse;
     border: 1px solid gray;
 }
 
-#boardsTable table th {
+.boardsTable th {
     border: 1px solid gray;
 }
 
-#boardsTable table tr td {
+.boardsTable tr td {
     border: 1px solid gray;
 }
 
-#boardsTable table tr span {
+.boardsTable tr span {
     cursor: pointer;
 }

@@ -1,14 +1,14 @@
-#createCommentDiv {
+.createCommentDiv {
     margin-top: 10px;
 }
 
-#createCommentTextArea {
+.createCommentTextArea {
     /* 크기 수정불가 */
     resize: none;
     wrap:hard;
 }
 
-#viewCommentDiv > h4 {
+.viewCommentH4 {
     border-bottom: 1px solid gray;
     padding: 10px 0px 10px 0px;
     margin: 50px 0px 0px 0px;
@@ -19,17 +19,7 @@
     padding: 10px 0px 10px 0px;
 }
 
-.commentNameDiv {
-    float:left;
-    padding-right: 10px;
-}
-
-#viewCommentDiv > div {
-    border-bottom: 1px solid gray;
-    padding: 10px 0px 10px 0px;
-}
-
-div[name*="commentName"]{
+.commentUserNameDiv {
     float:left;
     padding-right: 10px;
 }
