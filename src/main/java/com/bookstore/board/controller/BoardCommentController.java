@@ -19,8 +19,7 @@ public class BoardCommentController {
     @RequestMapping(value = "/boardComment/create", method = RequestMethod.POST)
     public @ResponseBody BoardComment createBoardComment(@RequestBody BoardComment boardComment) {
         User loginUser = CurrentUser.getCurrentUser();
-        boardCommentService.createBoardComment(boardComment, loginUser);
 
-        return boardComment;
+        return boardCommentService.createBoardComment(boardComment, loginUser);
     }
 }

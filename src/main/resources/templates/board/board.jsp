@@ -16,6 +16,25 @@
         </div>
     </form>
 
+    <div id="viewCommentDiv">
+        <h4>댓글</h4>
+        <%--<div id="comment_1">
+            <div id="commentName_1" name="commentName_1">IronMan</div>
+            <div id="commentRegDate_1" name="commentRegDate_1">2016.05.20 10:06</div>
+            <div id="commentContents_1" name="commentContents_1">축하드립니다</div>
+        </div>
+        <div>
+            <div>CaptainAmerica</div>
+            <div>2016.05.21 15:06</div>
+            <div>멋져요</div>
+        </div>
+        <div>
+            <div>CaptainAmerica</div>
+            <div>2016.05.22 23:06</div>
+            <div>사고싶어요</div>
+        </div>--%>
+    </div>
+
     <div id="createCommentDiv">
         <textarea id="createCommentTextArea" name="createCommentTextArea" cols="50" rows="4">멋져요</textarea>
         <button id="createCommentBtn">등록</button>

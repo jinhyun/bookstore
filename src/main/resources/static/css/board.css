@@ -7,3 +7,29 @@
     resize: none;
     wrap:hard;
 }
+
+#viewCommentDiv > h4 {
+    border-bottom: 1px solid gray;
+    padding: 10px 0px 10px 0px;
+    margin: 50px 0px 0px 0px;
+}
+
+.commentDiv {
+    border-bottom: 1px solid gray;
+    padding: 10px 0px 10px 0px;
+}
+
+.commentNameDiv {
+    float:left;
+    padding-right: 10px;
+}
+
+#viewCommentDiv > div {
+    border-bottom: 1px solid gray;
+    padding: 10px 0px 10px 0px;
+}
+
+div[name*="commentName"]{
+    float:left;
+    padding-right: 10px;
+}

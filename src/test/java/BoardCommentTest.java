@@ -2,7 +2,6 @@ import com.bookstore.Application;
 import com.bookstore.board.domain.BoardComment;
 import com.bookstore.board.service.BoardCommentService;
 import com.bookstore.mock.CreateMockBoardComments;
-import com.bookstore.mock.CreateMockBoards;
 import com.bookstore.user.domain.User;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +9,7 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.*;
 
-import org.junit.runner.RunWith;
 import org.junit.*;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.*;
@@ -36,9 +33,9 @@ public class BoardCommentTest {
             loginUser.setUserUid(1);
             loginUser.setName("aaaa");
 
-            int savedRow = boardCommentService.createBoardComment(boardComment, loginUser);
-            assertThat(boardComment.getBoardCommentUid(), is(notNullValue()));
-            assertThat(boardComment.getBoardCommentUid(), is(not(0)));
+            BoardComment savedBoardComment = boardCommentService.createBoardComment(boardComment, loginUser);
+            assertThat(savedBoardComment.getBoardCommentUid(), is(notNullValue()));
+            assertThat(savedBoardComment.getBoardCommentUid(), is(not(0)));
             totalSavedRod++;
         }
 
