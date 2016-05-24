@@ -3,8 +3,12 @@
 <html>
 <head>
     <title>Board detail</title>
+
+    <%-- CSS --%>
     <link type="text/css" rel="stylesheet" href="<c:url value='/static/css/layouts.css'/> ">
     <link type="text/css" rel="stylesheet" href="<c:url value='/static/css/board.css'/> ">
+
+    <%-- JavaScript Library --%>
     <script type="text/javascript" src="<c:url value='/webjars/jquery/2.1.4/jquery.min.js'/>"></script>
 </head>
 <body>
@@ -29,6 +33,7 @@
         </div>
     </div>
 
+    <%-- JavaScript Module --%>
     <script type="text/javascript" src="<c:url value='/static/js/boardComment.js'/>"></script>
     <script>
         (function() {

@@ -3,7 +3,11 @@
 <html>
 <head>
     <title>List of Boards</title>
+
+    <%-- CSS --%>
     <link type="text/css" rel="stylesheet" href="<c:url value='/static/css/boards.css'/> ">
+
+    <%-- JavaScript Library --%>
     <script type="text/javascript" src="<c:url value='/webjars/jquery/2.1.4/jquery.min.js'/>"></script>
 </head>
 <body>
@@ -32,6 +36,7 @@
         </div>
     </div>
 
+    <%-- JavaScript Module --%>
     <script type="text/javascript" src="<c:url value='/static/js/boards.js'/>"></script>
     <script type="text/javascript">
         (function() {

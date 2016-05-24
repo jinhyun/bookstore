@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>nav</title>
+
+    <%-- CSS --%>
     <link type="text/css" rel="stylesheet" href="<c:url value='/static/css/layouts.css'/> ">
 </head>
 <body>
