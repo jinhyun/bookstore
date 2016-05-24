@@ -7,27 +7,31 @@
     <script type="text/javascript" src="<c:url value='/webjars/jquery/2.1.4/jquery.min.js'/>"></script>
 </head>
 <body>
-<h1>List of Boards</h1>
-    <div id="boardsTable">
-        <table>
-            <thead>
+    <%@ include file="/templates/common/menu/nav.jsp" %>
+    <div id="section" class="section">
+        <h1>List of Boards</h1>
+        <div id="boardsTable">
+            <table>
+                <thead>
                 <th>제목</th>
                 <th>저자</th>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 <c:forEach var="board" items="${boards}" varStatus="status">
-                <tr style="border: 1px solid;">
-                    <td id="boardSubject_${status.index}" name="boardSubject_${status.index}" data-board-uid="<c:out value='${board.boardUid}'/>">
-                        <span><c:out value="${board.boardSubject}"/></span>
-                    </td>
-                    <td id="boardAuthor_${status.index}" name="boardAuthor_${status.index}">
-                        <span><c:out value="${board.boardAuthor}"/></span>
-                    </td>
-                </tr>
+                    <tr style="border: 1px solid;">
+                        <td id="boardSubject_${status.index}" name="boardSubject_${status.index}" data-board-uid="<c:out value='${board.boardUid}'/>">
+                            <span><c:out value="${board.boardSubject}"/></span>
+                        </td>
+                        <td id="boardAuthor_${status.index}" name="boardAuthor_${status.index}">
+                            <span><c:out value="${board.boardAuthor}"/></span>
+                        </td>
+                    </tr>
                 </c:forEach>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </div>
+
     <script type="text/javascript" src="<c:url value='/static/js/boards.js'/>"></script>
     <script type="text/javascript">
         (function() {

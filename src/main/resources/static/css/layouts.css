@@ -1,0 +1,13 @@
+.section {
+    float: left;
+}
+
+.nav {
+    float: left;
+    width: 100px;
+}
+
+.nav div {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
