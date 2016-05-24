@@ -23,7 +23,7 @@
             </div>
         </form>
 
-        <div id="viewCommentDiv">
+        <div id="viewCommentDiv" data-board-comments-rows="0">
             <h4>댓글</h4>
         </div>
 

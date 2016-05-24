@@ -55,36 +55,41 @@ var getBoardComments = function() {
 
 var addBoardComment = function(boardComment) {
   var commentElement, commentUserNameElement, commentRegDateElement, commentContentsElement,
-    commentRegDate, idx;
+    commentRegDate, commentsRows, viewCommentDivElement;
 
-  idx = 1;  //TODO: tempIdx
+  viewCommentDivElement = document.getElementById("viewCommentDiv");
+  commentsRows = parseInt(viewCommentDivElement.dataset.boardCommentsRows) + 1;
+
   commentElement = document.createElement("div");
-  commentElement.id = "comment_" + idx;
-  commentElement.name = "comment_" + idx;
+  commentElement.id = "comment_" + commentsRows;
+  commentElement.name = "comment_" + commentsRows;
   commentElement.className = "commentDiv";
+  commentElement.dataset.boardCommentUid = boardComment.boardCommentUid;
 
   commentUserNameElement = document.createElement("div");
-  commentUserNameElement.id = "commentName_" + idx;
-  commentUserNameElement.name = "commentName_" + idx;
+  commentUserNameElement.id = "commentName_" + commentsRows;
+  commentUserNameElement.name = "commentName_" + commentsRows;
   commentUserNameElement.innerText = boardComment.boardCommentUserName;
   commentUserNameElement.className = "commentNameDiv";
 
   commentRegDateElement = document.createElement("div");
   commentRegDate = new Date(boardComment.boardCommentRegDate);
-  commentRegDateElement.id = "commentRegDate_" + idx;
-  commentRegDateElement.name = "commentRegDate_" + idx;
+  commentRegDateElement.id = "commentRegDate_" + commentsRows;
+  commentRegDateElement.name = "commentRegDate_" + commentsRows;
   commentRegDateElement.innerText =
     commentRegDate.getFullYear() + "." + (commentRegDate.getMonth()+1) + "." + commentRegDate.getDate() + " " +
     commentRegDate.getHours() + ":" + commentRegDate.getMinutes();
 
   commentContentsElement = document.createElement("div");
-  commentContentsElement.id = "commentContents_" + idx;
-  commentContentsElement.name = "commentContents_" + idx;
+  commentContentsElement.id = "commentContents_" + commentsRows;
+  commentContentsElement.name = "commentContents_" + commentsRows;
   commentContentsElement.innerText = boardComment.boardCommentContents;
 
   commentElement.appendChild(commentUserNameElement);
   commentElement.appendChild(commentRegDateElement);
   commentElement.appendChild(commentContentsElement);
 
-  $("#viewCommentDiv").append(commentElement);
+  viewCommentDivElement.appendChild(commentElement);
+
+  viewCommentDivElement.dataset.boardCommentsRows = commentsRows;
 };
