@@ -28,10 +28,10 @@
             </tbody>
         </table>
     </div>
-    <script type="text/javascript" src="<c:url value='/static/js/board.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='/static/js/boards.js'/>"></script>
     <script type="text/javascript">
         (function() {
-            boards();
+            boardsModule();
         })();
     </script>
 </body>

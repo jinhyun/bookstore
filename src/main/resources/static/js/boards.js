@@ -1,4 +1,4 @@
-var boards = function() {
+var boardsModule = function() {
   var bind = function() {
     var boardSubjects = $("td[name*=boardSubject]");
 
