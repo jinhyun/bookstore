@@ -12,7 +12,6 @@
         <div><a href="/home">Home</a></div>
         <div><a href="/boards">게시글 목록</a></div>
         <div><a href="/board/create">게시글 생성</a></div>
-        <div id="login"><a href="/login/loginForm">로그인</a></div>
         <div id="logout"><a href="/logout">로그아웃</a></div>
         <div id="userName"></div>
     </div>
@@ -29,12 +28,10 @@
             }
 
             welcome = userName + " 님 <br/> 환영합니다.";
-            document.getElementById("login").style.display = "none";
             document.getElementById("logout").style.display = "block";
 
         } else {
             welcome = "로그인후 <br/> 이용바랍니다.";
-            document.getElementById("login").style.display = "block";
             document.getElementById("logout").style.display = "none";
         }
 
