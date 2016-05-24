@@ -6,7 +6,7 @@
     <link type="text/css" rel="stylesheet" href="<c:url value='/static/css/layouts.css'/> ">
 </head>
 <body>
-    <%@ include file="/templates/common/menu/nav.jsp" %>
+    <%@ include file="/templates/menu/nav.jsp" %>
     <div id="section" class="section">
         <form name="loginForm" method="post" action="/login/loginForm">
             Email: <input type="text" id="email" name="email" value="IronMan@bookstore.com"/>

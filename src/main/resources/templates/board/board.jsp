@@ -8,7 +8,7 @@
     <script type="text/javascript" src="<c:url value='/webjars/jquery/2.1.4/jquery.min.js'/>"></script>
 </head>
 <body>
-    <%@ include file="/templates/common/menu/nav.jsp" %>
+    <%@ include file="/templates/menu/nav.jsp" %>
     <div id="section" class="section">
         <h1>Board detail</h1>
         <form id="boardDetailForm" name="boardDetailForm" data-board-uid="<c:out value='${board.boardUid}'/>">

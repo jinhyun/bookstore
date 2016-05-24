@@ -6,7 +6,7 @@
     <link type="text/css" rel="stylesheet" href="<c:url value='/static/css/layouts.css'/> ">
 </head>
 <body>
-    <%@ include file="/templates/common/menu/nav.jsp" %>
+    <%@ include file="/templates/menu/nav.jsp" %>
     <div id="section" class="section">
         <h1>Create a new Board</h1>
         <form id="boardCreateForm" name="boardCreateForm" action="/board/create" method="post">
