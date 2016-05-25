@@ -27,4 +27,9 @@ public class BoardDao implements BoardMapper{
     public Board getBoardByBoardUid(int boardUid) {
         return sqlSession.selectOne("findByBoardUid", boardUid);
     }
+
+    @Override
+    public int updateBoard(Board board) {
+        return sqlSession.update("updateBoard", board);
+    }
 }

@@ -6,20 +6,31 @@
 
     <%-- CSS --%>
     <link type="text/css" rel="stylesheet" href="<c:url value='/static/css/layouts.css'/> ">
+
+    <%-- JavaScript Library --%>
+    <script type="text/javascript" src="<c:url value='/webjars/jquery/2.1.4/jquery.min.js'/>"></script>
 </head>
 <body>
     <%@ include file="/templates/menu/nav.jsp" %>
     <div id="section" class="section">
-        <h1>Create a new Board</h1>
-        <form id="boardCreateForm" name="boardCreateForm" action="/board/create" method="post">
+        <h1 id="menuNameH1">Create a new Board</h1>
+        <form id="boardCreateForm" name="boardCreateForm" action="/board/create" method="post" data-board-uid="<c:out value="${board.boardUid}"/> ">
             <div>
-                <p><input id="boardSubject" name="boardSubject" type="text" value="newSubject"></p>
-                <p><input id="boardContents" name="boardContents" type="text" value="newContents"></p>
-                <p><input id="boardAuthor" name="boardAuthor" type="text" value="newAuthor"></p>
+                <p>도서명: <input id="boardSubject" name="boardSubject" type="text" value="${board.boardSubject}"></p>
+                <p>소개글: <textarea id="boardContents" name="boardContents" cols="40" rows="3">${board.boardContents}</textarea></p>
+                <p>저자: <input id="boardAuthor" name="boardAuthor" type="text" value="${board.boardAuthor}"></p>
 
                 <p><button type="submit">submit</button></p>
             </div>
         </form>
     </div>
+
+    <%-- JavaScript Module --%>
+    <script type="text/javascript" src="<c:url value='/static/js/boardCreate.js'/>"></script>
+    <script>
+        (function() {
+            boardCreateModule();
+        })();
+    </script>
 </body>
 </html>

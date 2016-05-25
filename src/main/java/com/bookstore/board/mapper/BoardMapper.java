@@ -13,4 +13,6 @@ public interface BoardMapper {
     List<Board> getAllBoards();
 
     Board getBoardByBoardUid(int boardUid);
+
+    int updateBoard(Board board);
 }

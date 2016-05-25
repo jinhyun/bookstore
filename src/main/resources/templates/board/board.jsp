@@ -17,6 +17,9 @@
         <h1>Board detail</h1>
         <form id="boardDetailForm" name="boardDetailForm" data-board-uid="<c:out value='${board.boardUid}'/>">
             <div>
+                <button id="updateBoardFormBtn">수정</button>
+            </div>
+            <div>
                 <p>제목: ${board.boardSubject}</p>
                 <p>내용: ${board.boardContents}</p>
                 <p>저자: ${board.boardAuthor}</p>
@@ -34,9 +37,11 @@
     </div>
 
     <%-- JavaScript Module --%>
+    <script type="text/javascript" src="<c:url value='/static/js/board.js'/>"></script>
     <script type="text/javascript" src="<c:url value='/static/js/boardComment.js'/>"></script>
     <script>
         (function() {
+            boardModule();
             boardCommentModule();
         })();
     </script>

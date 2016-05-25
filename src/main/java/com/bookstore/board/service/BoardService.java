@@ -25,4 +25,12 @@ public class BoardService {
     public Board getBoardByBoardUid(int boardUid) {
         return boardDao.getBoardByBoardUid(boardUid);
     }
+
+    public int updateBoard(Board board) {
+        if (board.getBoardUid() < 1) {
+            throw new NullPointerException("BoardUid is not found");
+        }
+
+        return boardDao.updateBoard(board);
+    }
 }

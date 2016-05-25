@@ -33,4 +33,13 @@
         FROM BOARD
         WHERE BOARD_UID = #{boardUid}
     </select>
+
+    <update id="updateBoard" parameterType="Board">
+        UPDATE BOARD
+        SET
+          SUBJECT = #{boardSubject},
+          CONTENTS = #{boardContents},
+          AUTHOR = #{boardAuthor}
+        WHERE BOARD_UID = #{boardUid}
+    </update>
 </mapper>
