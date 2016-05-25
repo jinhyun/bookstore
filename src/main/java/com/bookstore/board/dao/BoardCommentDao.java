@@ -22,4 +22,9 @@ public class BoardCommentDao implements BoardCommentMapper {
     public List<BoardComment> getBoardCommentsByBoardUid(int boardUid) {
         return sqlSession.selectList("findBoardCommentsByBoardUid", boardUid);
     }
+
+    @Override
+    public int updateBoardComment(BoardComment boardComment) {
+        return sqlSession.update("updateBoardComment", boardComment);
+    }
 }

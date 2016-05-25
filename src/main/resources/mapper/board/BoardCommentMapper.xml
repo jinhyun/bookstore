@@ -23,4 +23,11 @@
         FROM BOARD_COMMENT
         WHERE BOARD_UID = #{boardUid}
     </select>
+
+    <update id="updateBoardComment" parameterType="BoardComment">
+        UPDATE BOARD_COMMENT
+        SET
+          CONTENTS = #{boardCommentContents}
+        WHERE BOARD_COMMENT_UID = #{boardCommentUid}
+    </update>
 </mapper>

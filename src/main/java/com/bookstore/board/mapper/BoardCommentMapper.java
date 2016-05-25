@@ -10,4 +10,6 @@ public interface BoardCommentMapper {
     int createBoardComment(BoardComment boardComment);
 
     List<BoardComment> getBoardCommentsByBoardUid(int boardUid);
+
+    int updateBoardComment(BoardComment boardComment);
 }

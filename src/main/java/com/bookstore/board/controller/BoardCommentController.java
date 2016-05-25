@@ -25,4 +25,9 @@ public class BoardCommentController {
     public @ResponseBody List<BoardComment> getBoardComments(@PathVariable int boardUid) {
         return boardCommentService.getBoardCommentsByBoardUid(boardUid);
     }
+
+    @RequestMapping(value = "/boardComment/update", method = RequestMethod.POST)
+    public @ResponseBody BoardComment updateBoardComment(@RequestBody BoardComment boardComment) {
+        return boardCommentService.updateBoardComment(boardComment);
+    }
 }

@@ -26,16 +26,28 @@
         <div id="viewCommentDiv" data-board-comments-rows="0">
             <h4 class="viewCommentH4">댓글</h4>
 
-            <div id="commentDiv_1" class="commentDiv" data-board-comment-uid="1">
-                <div id="commentUserNameDiv_100" class="commentUserNameDiv">Admin</div>
-                <div id="commentRegDateDiv_100" class="commentRegDateDiv" >2016.5.24 0:0</div>
-                <div id="commentUpdateDeleteDiv_100" class="commentUpdateDeleteDiv"> <span>수정</span> | <span>삭제</span> </div>
-                <div id="commentContentsDiv_100" class="commentContentsDiv">수정 / 삭제 버튼 추가</div>
-            </div>
+            <%--<div id="commentDiv_10" class="commentDiv" data-board-comment-uid="1">
+                <div id="commentUserNameDiv_10" class="commentUserNameDiv">Admin</div>
+                <div id="commentRegDateDiv_10" class="commentRegDateDiv" >2016.5.24 0:0</div>
+                <div id="commentFuncDiv" class="commentFuncDiv">
+                    <div id="commentUpdateDeleteDiv_10">
+                        <span id="showBoardCommentFormSpan_10" data-board-comment-row="10" onclick="showBoardCommentForm(this)">수정</span>
+                        <span> | </span>
+                        <span id="deleteBoardCommentSpan_10" data-board-comment-row="10">삭제</span>
+                    </div>
+
+                    <div id="commentConfirmCancelDiv_10" style="display: none">
+                        <span id="updateBoardCommentSpan_10" data-board-comment-row="10" onclick="updateBoardComment(this)">확인</span>
+                        <span> | </span>
+                        <span id="cancelBoardCommentSpan_10" data-board-comment-row="10" onclick="cancelBoardComment(this)">취소</span>
+                    </div>
+                </div>
+                <div id="commentContentsDiv_10" class="commentContentsDiv">수정 / 삭제 버튼 추가</div>
+            </div>--%>
         </div>
 
         <div id="createCommentDiv" class="createCommentDiv">
-            <textarea id="createCommentTextArea" name="createCommentTextArea" class="createCommentTextArea" cols="50" rows="4">멋져요</textarea>
+            <textarea id="createCommentTextArea" name="createCommentTextArea" class="fixCommentTextArea" cols="50" rows="4">멋져요</textarea>
             <button id="createCommentBtn">등록</button>
         </div>
     </div>

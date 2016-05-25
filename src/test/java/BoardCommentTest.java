@@ -49,4 +49,15 @@ public class BoardCommentTest {
         List<BoardComment> boardComments = boardCommentService.getBoardCommentsByBoardUid(1);
         assertThat(boardComments.size(), is(2));
     }
+
+    @Test
+    public void updateBoardComment() {
+        BoardComment boardComment = new BoardComment();
+        boardComment.setBoardCommentUid(1);
+        boardComment.setBoardCommentContents("애타는 마음 - 울랄라세션 아이유");
+
+        BoardComment updatedBoardComment = boardCommentService.updateBoardComment(boardComment);
+        assertThat(updatedBoardComment.getBoardCommentUid(), is(1));
+        assertThat(updatedBoardComment.getBoardCommentContents(), is("애타는 마음 - 울랄라세션 아이유"));
+    }
 }

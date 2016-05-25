@@ -43,4 +43,18 @@ public class BoardCommentService {
 
         return boardCommentDao.getBoardCommentsByBoardUid(boardUid);
     }
+
+    public BoardComment updateBoardComment(BoardComment boardComment) {
+        if (boardComment.getBoardCommentUid() < 1 || boardComment.getBoardCommentContents().equals("")) {
+            throw new IllegalArgumentException("boardUid, boardCommentContents must not be null");
+        }
+
+        int updatedRow = boardCommentDao.updateBoardComment(boardComment);
+
+        if (boardComment.getBoardCommentUid() < 1) {
+            throw new NullPointerException("boardCommentUid is not found");
+        }
+
+        return boardComment;
+    }
 }

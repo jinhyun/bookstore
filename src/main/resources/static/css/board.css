@@ -2,7 +2,7 @@
     margin-top: 10px;
 }
 
-.createCommentTextArea {
+.fixCommentTextArea {
     /* 크기 수정불가 */
     resize: none;
     wrap:hard;
@@ -28,11 +28,11 @@
     float: left;
 }
 
-.commentUpdateDeleteDiv {
+.commentFuncDiv {
     float: right;
 }
 
-.commentUpdateDeleteDiv span {
+.commentFuncDiv span {
     cursor: pointer;
 }
 
