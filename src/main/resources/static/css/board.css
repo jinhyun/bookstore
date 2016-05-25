@@ -23,3 +23,19 @@
     float:left;
     padding-right: 10px;
 }
+
+.commentRegDateDiv {
+    float: left;
+}
+
+.commentUpdateDeleteDiv {
+    float: right;
+}
+
+.commentUpdateDeleteDiv span {
+    cursor: pointer;
+}
+
+.commentContentsDiv {
+    clear: both;
+}

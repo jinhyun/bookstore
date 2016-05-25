@@ -25,6 +25,13 @@
 
         <div id="viewCommentDiv" data-board-comments-rows="0">
             <h4 class="viewCommentH4">댓글</h4>
+
+            <div id="commentDiv_1" class="commentDiv" data-board-comment-uid="1">
+                <div id="commentUserNameDiv_100" class="commentUserNameDiv">Admin</div>
+                <div id="commentRegDateDiv_100" class="commentRegDateDiv" >2016.5.24 0:0</div>
+                <div id="commentUpdateDeleteDiv_100" class="commentUpdateDeleteDiv"> <span>수정</span> | <span>삭제</span> </div>
+                <div id="commentContentsDiv_100" class="commentContentsDiv">수정 / 삭제 버튼 추가</div>
+            </div>
         </div>
 
         <div id="createCommentDiv" class="createCommentDiv">
