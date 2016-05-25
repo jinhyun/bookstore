@@ -1,6 +1,8 @@
 var boardCreateModule = function() {
-  if (isUpdateForm) {
+  if (formType() == 'update') {
     var form, inputBoardUidElement;
+    document.getElementById("updateH1").style.display = "block";
+
     form = document.getElementById("boardCreateForm");
     form.action = "/board/update";
     form.method = "post";
@@ -11,7 +13,9 @@ var boardCreateModule = function() {
     inputBoardUidElement.type = "hidden";
     form.appendChild(inputBoardUidElement);
 
-  } else {
+  } else if (formType() == 'create') {
+    document.getElementById("createH1").style.display = "block";
+
     // for Dev
     $("#boardSubject").val("new Subject");
     $("#boardContents").val("new Contents");
@@ -19,11 +23,11 @@ var boardCreateModule = function() {
   }
 };
 
-var isUpdateForm = function() {
+var formType = function() {
   if ($("#boardCreateForm").data("boardUid") > 0) {
-    return true;
+    return 'update';
 
   } else {
-    return false;
+    return 'create';
   }
 };

@@ -13,7 +13,8 @@
 <body>
     <%@ include file="/templates/menu/nav.jsp" %>
     <div id="section" class="section">
-        <h1 id="menuNameH1">Create a new Board</h1>
+        <h1 id="createH1" style="display: none">Create a new Board</h1>
+        <h1 id="updateH1" style="display: none">Update a Board</h1>
         <form id="boardCreateForm" name="boardCreateForm" action="/board/create" method="post" data-board-uid="<c:out value="${board.boardUid}"/> ">
             <div>
                 <p>도서명: <input id="boardSubject" name="boardSubject" type="text" value="${board.boardSubject}"></p>
