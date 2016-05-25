@@ -12,4 +12,6 @@ public interface BoardCommentMapper {
     List<BoardComment> getBoardCommentsByBoardUid(int boardUid);
 
     int updateBoardComment(BoardComment boardComment);
+
+    int deleteBoardComment(BoardComment boardComment);
 }

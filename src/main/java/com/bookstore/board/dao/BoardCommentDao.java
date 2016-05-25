@@ -27,4 +27,8 @@ public class BoardCommentDao implements BoardCommentMapper {
     public int updateBoardComment(BoardComment boardComment) {
         return sqlSession.update("updateBoardComment", boardComment);
     }
+
+    public int deleteBoardComment(BoardComment boardComment) {
+        return sqlSession.delete("deleteBoardComment", boardComment);
+    }
 }

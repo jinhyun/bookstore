@@ -57,4 +57,14 @@ public class BoardCommentService {
 
         return boardComment;
     }
+
+    public BoardComment deleteBoardComment(BoardComment boardComment) {
+        if (boardComment.getBoardCommentUid() < 1) {
+            throw new IllegalArgumentException("boardCommentUid must not be null");
+        }
+
+        int deletedRow = boardCommentDao.deleteBoardComment(boardComment);
+
+        return boardComment;
+    }
 }

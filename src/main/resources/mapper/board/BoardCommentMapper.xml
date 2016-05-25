@@ -30,4 +30,8 @@
           CONTENTS = #{boardCommentContents}
         WHERE BOARD_COMMENT_UID = #{boardCommentUid}
     </update>
+
+    <delete id="deleteBoardComment" parameterType="BoardComment">
+        DELETE FROM BOARD_COMMENT WHERE BOARD_COMMENT_UID = #{boardCommentUid}
+    </delete>
 </mapper>

@@ -30,4 +30,9 @@ public class BoardCommentController {
     public @ResponseBody BoardComment updateBoardComment(@RequestBody BoardComment boardComment) {
         return boardCommentService.updateBoardComment(boardComment);
     }
+
+    @RequestMapping(value = "/boardComment/delete", method = RequestMethod.POST)
+    public @ResponseBody BoardComment deleteBoardComment(@RequestBody BoardComment boardComment) {
+        return boardCommentService.deleteBoardComment(boardComment);
+    }
 }

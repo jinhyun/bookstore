@@ -105,6 +105,31 @@ var createBoardComment = function() {
   });
 };
 
+var deleteBoardComment = function(element) {
+  var boardComment, boardCommentRow;
+
+  boardCommentRow = element.dataset.boardCommentRow;
+
+  boardComment = {
+    boardCommentUid : document.getElementById("commentDiv_" + boardCommentRow).dataset.boardCommentUid
+  };
+
+  $.ajax({
+    url: '/boardComment/delete',
+    method: 'post',
+    data : JSON.stringify(boardComment),
+    contentType: "application/json",
+    async: false,
+    success: function(resultBoardComment) {
+      console.log(resultBoardComment);
+      document.getElementById("commentDiv_" + boardCommentRow).remove();
+    },
+    error: function() {
+
+    }
+  });
+};
+
 var getBoardComments = function() {
   var boardUid = $('#boardDetailForm').data("board-uid");
 
@@ -178,7 +203,7 @@ var addBoardComment = function(boardComment) {
       deleteBoardCommentElement.dataset.boardCommentRow = commentsRows;
       deleteBoardCommentElement.innerText = "삭제";
       deleteBoardCommentElement.addEventListener("click", function(){
-        deleteBoardCommentElement(this);
+        deleteBoardComment(this);
       });
 
       commentUpdateDeleteElement.appendChild(showBoardCommentFormElement);
