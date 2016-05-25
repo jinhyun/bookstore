@@ -50,9 +50,15 @@ public class BoardController {
     }
 
     @RequestMapping(value = "/board/update", method = RequestMethod.POST)
-    public String getBoardUpdate(@ModelAttribute Board board, Model model) {
+    public String updateBoard(@ModelAttribute Board board, Model model) {
         int updatedRow = boardService.updateBoard(board);
         model.addAttribute("board", boardService.getBoardByBoardUid(board.getBoardUid()));
         return "board/board";
+    }
+
+    @RequestMapping(value = "/board/delete", method = RequestMethod.POST)
+    public String deleteBoard(@ModelAttribute Board board) {
+        int deletedRow = boardService.deleteBoard(board);
+        return "redirect:/boards";
     }
 }

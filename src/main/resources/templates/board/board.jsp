@@ -18,6 +18,7 @@
         <form id="boardDetailForm" name="boardDetailForm" data-board-uid="<c:out value='${board.boardUid}'/>">
             <div>
                 <button id="updateBoardFormBtn">수정</button>
+                <button id="deleteBoardBtn">삭제</button>
             </div>
             <div>
                 <p>제목: ${board.boardSubject}</p>

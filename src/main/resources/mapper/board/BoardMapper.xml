@@ -42,4 +42,8 @@
           AUTHOR = #{boardAuthor}
         WHERE BOARD_UID = #{boardUid}
     </update>
+
+    <delete id="deleteBoard" parameterType="Board">
+        DELETE FROM BOARD WHERE BOARD_UID = #{boardUid}
+    </delete>
 </mapper>

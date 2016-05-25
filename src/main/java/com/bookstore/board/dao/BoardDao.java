@@ -32,4 +32,9 @@ public class BoardDao implements BoardMapper{
     public int updateBoard(Board board) {
         return sqlSession.update("updateBoard", board);
     }
+
+    @Override
+    public int deleteBoard(Board board) {
+        return sqlSession.delete("deleteBoard", board);
+    }
 }

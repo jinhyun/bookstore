@@ -33,4 +33,13 @@ public class BoardService {
 
         return boardDao.updateBoard(board);
     }
+
+    public int deleteBoard(Board board) {
+        if (board.getBoardUid() < 1) {
+            throw new NullPointerException("BoardUid is not found");
+        }
+
+        // TODO: 댓글 삭제
+        return boardDao.deleteBoard(board);
+    }
 }

@@ -15,4 +15,6 @@ public interface BoardMapper {
     Board getBoardByBoardUid(int boardUid);
 
     int updateBoard(Board board);
+
+    int deleteBoard(Board board);
 }
