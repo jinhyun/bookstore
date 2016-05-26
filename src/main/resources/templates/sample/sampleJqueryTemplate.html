@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Examples</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script src="jquery.loadTemplate-1.5.7.js"></script>
+    <script>
+        var peoples = [
+            {
+                id: 'idx_1',
+                author_id: 'author_1',
+                name: 'idx_1',
+                author: 'AntMan',
+                date: '19th March 2016',
+                post: 'This is the AntMan Contents',
+                dataCommentRow: '1'
+            },
+            {
+                id:'idx_2',
+                author_id: 'author_2',
+                name: 'idx_2',
+                author: 'Black Widow',
+                date: '20th March 2016',
+                post: 'This is the Black Widow Contents',
+                dataCommentRow: '2'
+            }
+        ];
+
+        function bindOnclick() {
+            $("#onclickTest").bind("click", function() {
+                alert('Click!!');
+            });
+        }
+
+        function goBinding() {
+            $("#template-container").loadTemplate($("#template"), peoples, {
+                afterInsert: bindOnclick
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="template-container">
+        <p>Template Container Div<p>
+        <button onclick="goBinding();">jquery template test</button>
+    </div>
+
+    <script type="text/html" id="template">
+        <div style="border: 1px solid gray; margin: 10px; padding: 10px">
+            <div data-id="id">sets the id of the element to the value</div>
+            <div data-content="date">binds the value supplied to the content (innerHTML) of the element</div>
+            <div data-id="author_id" data-content="author">id and content</div>
+            <div data-template-bind='[{"attribute": "data-comment-row", "value":"dataCommentRow"}]' >attribute bind</div>
+            <input type="text" data-value="author"/>
+            <div data-template-bind='[
+                    {"attribute": "content", "value": "post"},
+                    {"attribute": "data-date", "value": "date"},
+                    {"attribute": "data-author", "value": "author", "formatter": "sameCaseFormatter", "formatOptions": "upper"}
+                ]'>
+            </div>
+            <div data-name="name">not operate name / use data-template-bind</div>
+            <button id="onclickTest">onclick test</button>
+        </div>
+    </script>
+</body>
+</html>

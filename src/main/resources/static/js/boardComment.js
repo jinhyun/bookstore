@@ -106,6 +106,9 @@ var createBoardComment = function() {
 };
 
 var deleteBoardComment = function(element) {
+  if (confirm("댓글을 삭제하시겠습니까?") == false) {
+    return;
+  }
   var boardComment, boardCommentRow;
 
   boardCommentRow = element.dataset.boardCommentRow;
@@ -139,14 +142,58 @@ var getBoardComments = function() {
     contentType: "application/json",
     async: false,
     success: function(boardComments) {
-      for (var i = 0; i < boardComments.length;  i++){
-        addBoardComment(boardComments[i]);
-      }
+      addBoardCommentTemplate(boardComments);
     },
     error: function() {
 
     }
   });
+};
+
+var addBoardCommentTemplate = function(boardComments) {
+  var boardCommentsTemplate, viewCommentDivElement, commentsRows, boardComment;
+
+  boardCommentsTemplate = [];
+  viewCommentDivElement = document.getElementById("viewCommentDiv");
+  commentsRows = parseInt(viewCommentDivElement.dataset.boardCommentsRows) + 1;
+
+  for (var i = 0; i < boardComments.length; i++) {
+    boardComment = {
+      boardDataCommentRow: commentsRows,
+
+      commentDiv_id: "commentDiv_" + commentsRows,
+      commentDiv_class: "commentDiv",
+
+        commentUserNameDiv_id: "commentUserNameDiv_" + commentsRows,
+        commentUserNameDiv_class: "commentUserNameDiv",
+        userName: boardComments[i].boardCommentUserName,
+
+        commentRegDateDiv_id: "commentRegDateDiv_" + commentsRows,
+        commentRegDateDiv_class: "commentRegDateDiv",
+        regDate: boardComments[i].boardCommentRegDate,
+
+        commentFuncDiv_id: "commentFuncDiv",
+        commentFuncDiv_class: "commentFuncDiv",
+
+          commentUpdateDeleteDiv_id: "commentUpdateDeleteDiv_" + commentsRows,
+            showBoardCommentFormSpan_id: "showBoardCommentFormSpan_" + commentsRows,
+            deleteBoardCommentFormSpan_id: "deleteBoardCommentFormSpan_" + commentsRows,
+
+          commentConfirmCancelDiv_id: "commentConfirmCancelDiv_" + commentsRows,
+            updateBoardCommentSpan_id: "updateBoardCommentSpan_" + commentsRows,
+            cancelBoardCommentSpan_id: "cancelBoardCommentSpan_" + commentsRows,
+
+        commentContentsDiv_id: "commentContentsDiv_" + commentsRows,
+        commentContentsDiv_class: "commentContentsDiv",
+        contents: boardComments[i].boardCommentContents
+    };
+
+    boardCommentsTemplate.push(boardComment);
+    commentsRows = commentsRows + 1;
+  }
+
+  viewCommentDivElement.dataset.boardCommentsRows = commentsRows;
+  $("#comment-container").loadTemplate($("#commentTemplate"), boardCommentsTemplate);
 };
 
 // 너무 너무 복잡함

@@ -35,6 +35,11 @@
 
         <!-- JSTL Version -->
         <jstl.version>1.2</jstl.version>
+
+        <!-- jQuery Template Version -->
+        <!-- https://github.com/webjars/jquery-template/blob/master/pom.xml -->
+        <!-- https://github.com/codepb/jquery-template -->
+        <jquery-template.version>1.5.7</jquery-template.version>
     </properties>
 
     <dependencies>
@@ -83,6 +88,13 @@
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
             <version>${jquery.version}</version>
+        </dependency>
+
+        <!-- jQuery Template -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery-template</artifactId>
+            <version>${jquery-template.version}</version>
         </dependency>
 
         <!-- Spring security -->
