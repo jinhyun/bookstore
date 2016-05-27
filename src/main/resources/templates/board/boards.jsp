@@ -14,7 +14,7 @@
     <script type="text/javascript" src="<c:url value='/static/js/boards.js'/>"></script>
     <script>
         $(document).ready(function() {
-            boardsInit();
+            initBoards();
         });
     </script>
 </head>

@@ -14,7 +14,7 @@
     <script type="text/javascript" src="<c:url value='/static/js/boardCreate.js'/>"></script>
     <script>
         $(document).ready(function() {
-            boardCreateInit();
+            initBoardCreate();
         });
     </script>
 </head>

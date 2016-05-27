@@ -1,10 +1,10 @@
-function boardInit() {
-  boardBind();
-  boardCommentBind();
+function initBoard() {
+  bindBoard();
+  bindBoardComment();
   getBoardComments();
 }
 
-function boardBind() {
+function bindBoard() {
   $("#updateBoardFormBtn").bind("click", function() {
     gotoUpdateBoardForm();
   });
@@ -19,7 +19,7 @@ function boardBind() {
   });
 }
 
-function boardCommentBind() {
+function bindBoardComment() {
   $("#createCommentBtn").bind("click", function() {
     createBoardComment();
   });
@@ -195,7 +195,6 @@ function deleteBoardComment(element) {
     contentType: "application/json",
     async: false,
     success: function(resultBoardComment) {
-      console.log(resultBoardComment);
       document.getElementById("commentDiv_" + boardCommentRow).remove();
     },
     error: function() {

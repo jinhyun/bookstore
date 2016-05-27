@@ -1,8 +1,8 @@
-function boardsInit() {
-  boardsBind();
+function initBoards() {
+  bindBoards();
 }
 
-function boardsBind () {
+function bindBoards () {
   var boardSubjectElements = $("td[name*=boardSubjectTd]");
 
   for (var i = 0; i < boardSubjectElements.length; i++) {

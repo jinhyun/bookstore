@@ -17,7 +17,7 @@
 
     <script>
         $(document).ready(function() {
-            boardInit();
+            initBoard();
         });
     </script>
 </head>
