@@ -163,6 +163,7 @@ var addBoardCommentTemplate = function(boardComments) {
 
       commentDiv_id: "commentDiv_" + commentsRows,
       commentDiv_class: "commentDiv",
+      dataBoardCommentUid: boardComments[i].boardCommentUid,
 
         commentUserNameDiv_id: "commentUserNameDiv_" + commentsRows,
         commentUserNameDiv_class: "commentUserNameDiv",

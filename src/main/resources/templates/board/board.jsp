@@ -16,7 +16,8 @@
     <%@ include file="/templates/menu/nav.jsp" %>
     <div id="section" class="section">
         <h1>Board detail</h1>
-        <form id="boardDetailForm" name="boardDetailForm" data-board-uid="<c:out value='${board.boardUid}'/>">
+        <form id="boardDetailForm" name="boardDetailForm" data-board-uid="<c:out value='${board.boardUid}'/>" data-login-user-uid="<c:out value='${loginUser.userUid}'/>">
+            <input type="hidden" value="kakak">
             <div>
                 <button id="updateBoardFormBtn">수정</button>
                 <button id="deleteBoardBtn">삭제</button>
@@ -44,7 +45,7 @@
     <script type="text/javascript" src="<c:url value='/static/js/boardComment.js'/>"></script>
 
     <script type="text/html" id="commentTemplate">
-        <div data-id="commentDiv_id" data-class="commentDiv_class" data-board-comment-uid="1">
+        <div data-id="commentDiv_id" data-class="commentDiv_class" data-template-bind='[{"attribute": "data-board-comment-uid", "value":"dataBoardCommentUid"}]'>
             <div data-id="commentUserNameDiv_id" data-class="commentUserNameDiv_class" data-content="userName"></div>
             <div data-id="commentRegDateDiv_id"  data-class="commentRegDateDiv_class" data-content="regDate"></div>
             <div data-id="commentFuncDiv_id" data-class="commentFuncDiv_class">
