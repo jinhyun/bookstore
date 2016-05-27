@@ -26,8 +26,8 @@
     <div id="section" class="section">
         <h1>Board detail</h1>
         <form id="boardDetailForm" name="boardDetailForm">
-            <input id="boardUid" name="boardUid" type="text" value="<c:out value='${board.boardUid}'/>">
-            <input id="loginUserUid" name="loginUserUid" type="text" value="<c:out value='${loginUser.loginUserUid}'/>">
+            <input id="boardUid" name="boardUid" type="hidden" value="<c:out value='${board.boardUid}'/>">
+            <input id="loginUserUid" name="loginUserUid" type="hidden" value="<c:out value='${loginUser.loginUserUid}'/>">
             <div>
                 <button id="updateBoardFormBtn">수정</button>
                 <button id="deleteBoardBtn">삭제</button>
@@ -40,7 +40,7 @@
         </form>
 
         <div id="viewCommentDiv">
-            <input id="lastCommentRowIdx" type="text" value="0">
+            <input id="lastCommentRowIdx" type="hidden" value="0">
             <h4 class="viewCommentH4">댓글</h4>
             <div id="comment-container"></div>
         </div>
@@ -53,7 +53,7 @@
 
     <script type="text/html" id="commentTemplate">
         <div data-id="commentDiv_idx" data-class="commentDiv_class">
-            <input type="text" data-id="boardCommentUid_idx" data-value="boardCommentUid">
+            <input type="hidden" data-id="boardCommentUid_idx" data-value="boardCommentUid">
             <div data-id="commentUserNameDiv_idx" data-class="commentUserNameDiv_class" data-content="userName"></div>
             <div data-id="commentRegDateDiv_idx"  data-class="commentRegDateDiv_class" data-content="regDate"></div>
             <div data-id="commentFuncDiv_idx" data-class="commentFuncDiv_class">

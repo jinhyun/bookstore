@@ -80,9 +80,10 @@ function isAuthUpdateDelete() {
 }
 
 function showBoardCommentForm(element) {
-  var commentRowIdx, commentContentsDivElement, textareaNode;
+  var commentRowIdx, commentContentsDivElement, textareaNode, elementId;
 
-  commentRowIdx = element.id.substring(element.id.lastIndexOf("_") + 1);
+  elementId = element.id;
+  commentRowIdx = elementId.substring(elementId.lastIndexOf("_") + 1);
   commentContentsDivElement = document.getElementById("commentContentsDiv_" + commentRowIdx);
 
   textareaNode = document.createElement("textarea");
@@ -95,34 +96,36 @@ function showBoardCommentForm(element) {
   commentContentsDivElement.innerText = "";
   commentContentsDivElement.appendChild(textareaNode);
 
-  document.getElementById("commentUpdateDeleteDiv_" + commentRowIdx).style.display = "none";
-  document.getElementById("commentConfirmCancelDiv_" + commentRowIdx).style.display = "block";
+  $("#commentUpdateDeleteDiv_" + commentRowIdx).hide();
+  $("#commentConfirmCancelDiv_" + commentRowIdx).show();
 }
 
 function cancelBoardComment(element) {
-  var commentRowIdx, commentContentsTextareaElement, commentContentsDivElement;
+  var commentRowIdx, commentContentsTextareaElement, commentContentsDivElement, elementId;
 
-  commentRowIdx = element.id.substring(element.id.lastIndexOf("_") + 1);
+  elementId = element.id;
+  commentRowIdx = elementId.substring(elementId.lastIndexOf("_") + 1);
   commentContentsTextareaElement = document.getElementById("commentContentsTextarea_" + commentRowIdx);
   commentContentsDivElement = document.getElementById("commentContentsDiv_" + commentRowIdx);
 
   commentContentsDivElement.innerText = commentContentsTextareaElement.value;
   commentContentsTextareaElement.remove();
 
-  document.getElementById("commentUpdateDeleteDiv_" + commentRowIdx).style.display = "block";
-  document.getElementById("commentConfirmCancelDiv_" + commentRowIdx).style.display = "none";
+  $("#commentUpdateDeleteDiv_" + commentRowIdx).show();
+  $("#commentConfirmCancelDiv_" + commentRowIdx).hide();
 }
 
 function updateBoardComment(element) {
-  var commentRowIdx, boardComment;
+  var commentRowIdx, boardComment, elementId;
 
-  commentRowIdx = element.id.substring(element.id.lastIndexOf("_") + 1);
+  elementId = element.id;
+  commentRowIdx = elementId.substring(elementId.lastIndexOf("_") + 1);
 
   boardComment = {
     boardCommentUid  : $("#boardCommentUid_" + commentRowIdx).val(),
     boardCommentContents: $("#commentContentsTextarea_" + commentRowIdx).val()
   };
-  
+
   $.ajax({
     url: "/boardComment/update",
     method: "post",
@@ -141,8 +144,8 @@ function updateBoardComment(element) {
       commentContentsDivElement.innerText = updatedBoardCommentContents;
       commentContentsTextareaElement.remove();
 
-      document.getElementById("commentUpdateDeleteDiv_" + commentRowIdx).style.display = "block";
-      document.getElementById("commentConfirmCancelDiv_" + commentRowIdx).style.display = "none";
+      $("#commentUpdateDeleteDiv_" + commentRowIdx).show();
+      $("#commentConfirmCancelDiv_" + commentRowIdx).hide();
     },
     error: function() {
 
@@ -179,9 +182,10 @@ function deleteBoardComment(element) {
   if (confirm("댓글을 삭제하시겠습니까?") == false) {
     return;
   }
-  var boardComment, commentRowIdx;
+  var boardComment, commentRowIdx, elementId;
 
-  commentRowIdx = element.id.substring(element.id.lastIndexOf("_") + 1);
+  elementId = element.id;
+  commentRowIdx = elementId.substring(elementId.lastIndexOf("_") + 1);
 
   boardComment = {
     boardCommentUid: $("#boardCommentUid_" + commentRowIdx).val()
@@ -193,7 +197,7 @@ function deleteBoardComment(element) {
     data : JSON.stringify(boardComment),
     contentType: "application/json",
     async: false,
-    success: function(resultBoardComment) {
+    success: function() {
       document.getElementById("commentDiv_" + commentRowIdx).remove();
     },
     error: function() {

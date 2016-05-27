@@ -5,7 +5,7 @@ function initBoardCreate() {
 function showByFormType() {
   if (formType() == 'update') {
     var form, inputBoardUidElement;
-    document.getElementById("updateH1").style.display = "block";
+    $("#updateH1").show();
 
     form = document.getElementById("boardCreateForm");
     form.action = "/board/update";
@@ -18,7 +18,7 @@ function showByFormType() {
     form.appendChild(inputBoardUidElement);
 
   } else if (formType() == 'create') {
-    document.getElementById("createH1").style.display = "block";
+    $("#createH1").show();
 
     // for Dev
     $("#boardSubject").val("new Subject");
