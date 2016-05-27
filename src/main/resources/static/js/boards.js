@@ -1,18 +1,18 @@
-var boardsModule = function() {
-  var bind = function() {
-    var boardSubjectElements = $("td[name*=boardSubjectTd]");
+function boardsInit() {
+  boardsBind();
+}
 
-    for (var i = 0; i < boardSubjectElements.length; i++) {
-      $("#" + boardSubjectElements[i].id).bind("click", function(){
-        viewBoard($(this).data("board-uid"));
-      });
-    }
-  };
+function boardsBind () {
+  var boardSubjectElements = $("td[name*=boardSubjectTd]");
 
-  bind();
-};
+  for (var i = 0; i < boardSubjectElements.length; i++) {
+    $("#" + boardSubjectElements[i].id).bind("click", function(){
+      viewBoard($(this).data("board-uid"));
+    });
+  }
+}
 
-var viewBoard = function(boardUid) {
+function viewBoard(boardUid) {
   var form = document.createElement("form");
   form.action = "/board/" + boardUid;
   form.method = "get";
@@ -22,5 +22,4 @@ var viewBoard = function(boardUid) {
   form.submit();
 
   document.body.removeChild(form);
-};
-
+}

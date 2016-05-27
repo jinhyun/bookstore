@@ -1,4 +1,8 @@
-var boardCreateModule = function() {
+function boardCreateInit() {
+  showByFormType();
+}
+
+function showByFormType() {
   if (formType() == 'update') {
     var form, inputBoardUidElement;
     document.getElementById("updateH1").style.display = "block";
@@ -21,13 +25,14 @@ var boardCreateModule = function() {
     $("#boardContents").val("new Contents");
     $("#boardAuthor").val("new Author");
   }
-};
+}
 
-var formType = function() {
+
+function formType() {
   if ($("#boardCreateForm").data("boardUid") > 0) {
     return 'update';
 
   } else {
     return 'create';
   }
-};
+}

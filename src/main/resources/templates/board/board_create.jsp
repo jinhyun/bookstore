@@ -9,6 +9,14 @@
 
     <%-- JavaScript Library --%>
     <script type="text/javascript" src="<c:url value='/webjars/jquery/2.1.4/jquery.min.js'/>"></script>
+
+    <%-- JavaScript Module --%>
+    <script type="text/javascript" src="<c:url value='/static/js/boardCreate.js'/>"></script>
+    <script>
+        $(document).ready(function() {
+            boardCreateInit();
+        });
+    </script>
 </head>
 <body>
     <%@ include file="/templates/menu/nav.jsp" %>
@@ -25,13 +33,5 @@
             </div>
         </form>
     </div>
-
-    <%-- JavaScript Module --%>
-    <script type="text/javascript" src="<c:url value='/static/js/boardCreate.js'/>"></script>
-    <script>
-        (function() {
-            boardCreateModule();
-        })();
-    </script>
 </body>
 </html>

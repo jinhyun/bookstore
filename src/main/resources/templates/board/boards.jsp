@@ -9,6 +9,14 @@
 
     <%-- JavaScript Library --%>
     <script type="text/javascript" src="<c:url value='/webjars/jquery/2.1.4/jquery.min.js'/>"></script>
+
+    <%-- JavaScript Module --%>
+    <script type="text/javascript" src="<c:url value='/static/js/boards.js'/>"></script>
+    <script>
+        $(document).ready(function() {
+            boardsInit();
+        });
+    </script>
 </head>
 <body>
     <%@ include file="/templates/menu/nav.jsp" %>
@@ -33,13 +41,5 @@
             </tbody>
         </table>
     </div>
-
-    <%-- JavaScript Module --%>
-    <script type="text/javascript" src="<c:url value='/static/js/boards.js'/>"></script>
-    <script type="text/javascript">
-        (function() {
-            boardsModule();
-        })();
-    </script>
 </body>
 </html>
