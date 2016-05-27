@@ -25,10 +25,9 @@
     <%@ include file="/templates/menu/nav.jsp" %>
     <div id="section" class="section">
         <h1>Board detail</h1>
-        <form id="boardDetailForm" name="boardDetailForm"
-              data-board-uid="<c:out value='${board.boardUid}'/>" data-login-user-uid="<c:out value='${loginUser.userUid}'/>">
-            <input id="boardUid" name="boardUid" type="text" value="<c:out value='${board.boardUid}'/>" />
-            <input id="loginUserUid" name="loginUserUid" type="text" value="<c:out value='${loginUser.loginUserUid}'/>" />
+        <form id="boardDetailForm" name="boardDetailForm">
+            <input id="boardUid" name="boardUid" type="text" value="<c:out value='${board.boardUid}'/>">
+            <input id="loginUserUid" name="loginUserUid" type="text" value="<c:out value='${loginUser.loginUserUid}'/>">
             <div>
                 <button id="updateBoardFormBtn">수정</button>
                 <button id="deleteBoardBtn">삭제</button>
@@ -40,7 +39,8 @@
             </div>
         </form>
 
-        <div id="viewCommentDiv" data-board-comments-rows="0">
+        <div id="viewCommentDiv">
+            <input id="lastCommentRowIdx" type="text" value="0">
             <h4 class="viewCommentH4">댓글</h4>
             <div id="comment-container"></div>
         </div>
@@ -52,22 +52,23 @@
     </div>
 
     <script type="text/html" id="commentTemplate">
-        <div data-id="commentDiv_id" data-class="commentDiv_class" data-template-bind='[{"attribute": "data-board-comment-uid", "value":"dataBoardCommentUid"}]'>
-            <div data-id="commentUserNameDiv_id" data-class="commentUserNameDiv_class" data-content="userName"></div>
-            <div data-id="commentRegDateDiv_id"  data-class="commentRegDateDiv_class" data-content="regDate"></div>
-            <div data-id="commentFuncDiv_id" data-class="commentFuncDiv_class">
-                <div data-id="commentUpdateDeleteDiv_id">
-                    <span data-id="showBoardCommentFormSpan_id" data-template-bind='[{"attribute": "data-board-comment-row", "value":"boardDataCommentRow"}]' onclick="showBoardCommentForm(this)">수정</span>
+        <div data-id="commentDiv_idx" data-class="commentDiv_class">
+            <input type="text" data-id="boardCommentUid_idx" data-value="boardCommentUid">
+            <div data-id="commentUserNameDiv_idx" data-class="commentUserNameDiv_class" data-content="userName"></div>
+            <div data-id="commentRegDateDiv_idx"  data-class="commentRegDateDiv_class" data-content="regDate"></div>
+            <div data-id="commentFuncDiv_idx" data-class="commentFuncDiv_class">
+                <div data-id="commentUpdateDeleteDiv_idx">
+                    <span data-id="showBoardCommentFormSpan_idx" onclick="showBoardCommentForm(this)">수정</span>
                     <span> | </span>
-                    <span data-id="deleteBoardCommentFormSpan_id" data-template-bind='[{"attribute": "data-board-comment-row", "value":"boardDataCommentRow"}]' onclick="deleteBoardComment(this)">삭제</span>
+                    <span data-id="deleteBoardCommentFormSpan_idx" onclick="deleteBoardComment(this)">삭제</span>
                 </div>
-                <div data-id="commentConfirmCancelDiv_id" style="display: none;">
-                    <span data-id="updateBoardCommentSpan_id" data-template-bind='[{"attribute": "data-board-comment-row", "value":"boardDataCommentRow"}]' onclick="updateBoardComment(this)">확인</span>
+                <div data-id="commentConfirmCancelDiv_idx" style="display: none;">
+                    <span data-id="updateBoardCommentSpan_idx" onclick="updateBoardComment(this)">확인</span>
                     <span> | </span>
-                    <span data-id="cancelBoardCommentSpan_id" data-template-bind='[{"attribute": "data-board-comment-row", "value":"boardDataCommentRow"}]' onclick="cancelBoardComment(this)">취소</span>
+                    <span data-id="cancelBoardCommentSpan_idx" onclick="cancelBoardComment(this)">취소</span>
                 </div>
             </div>
-            <div data-id="commentContentsDiv_id" data-class="commentContentsDiv_class" data-content="contents"></div>
+            <div data-id="commentContentsDiv_idx" data-class="commentContentsDiv_class" data-content="contents"></div>
         </div>
     </script>
 </body>
