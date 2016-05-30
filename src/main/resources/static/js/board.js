@@ -2,6 +2,7 @@ function initBoard() {
   bindBoard();
   bindBoardComment();
   getBoardComments();
+  showBoardFuncBtns();
 }
 
 function bindBoard() {
@@ -40,6 +41,21 @@ function getBoardComments() {
 
     }
   });
+}
+
+function showBoardFuncBtns() {
+  if (isSameTwoParams($("#loginUserUid").val(), $("#boardRegUserUid").val())) {
+    $("#boardFuncDiv").show();
+  }
+}
+
+function isSameTwoParams(a, b){
+  if (a.toString().trim() == b.toString().trim()) {
+    return true;
+
+  } else {
+    return false;
+  }
 }
 
 function deleteBoard() {
@@ -202,8 +218,8 @@ function deleteBoardComment(element) {
   });
 }
 
-function commentFuncClass(loginUserUid, boardCommentUserUid) {
-  if (loginUserUid == boardCommentUserUid) {
+function showBoardCommentFuncBtns(loginUserUid, boardCommentUserUid) {
+  if (isSameTwoParams(loginUserUid, boardCommentUserUid)) {
     return "commentFuncDiv";
 
   } else {
@@ -238,7 +254,7 @@ function addBoardComment(boardComments) {
       regDate: boardComments[i].boardCommentRegDate,
 
       commentFuncDiv_idx: "commentFuncDiv",
-      commentFuncDiv_class: commentFuncClass(loginUserUid, boardComments[i].boardCommentUserUid),
+      commentFuncDiv_class: showBoardCommentFuncBtns(loginUserUid, boardComments[i].boardCommentUserUid),
 
       commentUpdateDeleteDiv_idx: "commentUpdateDeleteDiv_" + lastCommentRowIdx,
       showBoardCommentFormSpan_idx: "showBoardCommentFormSpan_" + lastCommentRowIdx,
