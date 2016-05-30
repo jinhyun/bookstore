@@ -8,6 +8,8 @@ public class Board {
     private String boardContents;
     private String boardAuthor;
     private Date boardRegDate;
+    private int boardRegUserUid;
+    private String boardRegUserName;
 
     public int getBoardUid() {
         return boardUid;
@@ -47,5 +49,21 @@ public class Board {
 
     public void setBoardRegDate(Date boardRegDate) {
         this.boardRegDate = boardRegDate;
+    }
+
+    public int getBoardRegUserUid() {
+        return boardRegUserUid;
+    }
+
+    public void setBoardRegUserUid(int boardRegUserUid) {
+        this.boardRegUserUid = boardRegUserUid;
+    }
+
+    public String getBoardRegUserName() {
+        return boardRegUserName;
+    }
+
+    public void setBoardRegUserName(String boardRegUserName) {
+        this.boardRegUserName = boardRegUserName;
     }
 }

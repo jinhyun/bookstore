@@ -4,9 +4,9 @@
 <mapper namespace="com.bookstore.board.mapper.BoardMapper">
     <insert id="saveBoard" parameterType="Board" useGeneratedKeys="true" keyProperty="boardUid" keyColumn="boardUid">
         INSERT INTO BOARD
-          (SUBJECT, CONTENTS, AUTHOR, REG_DATE)
+          (SUBJECT, CONTENTS, AUTHOR, REG_DATE, REG_USER_UID, REG_USER_NAME)
         VALUES
-          (#{boardSubject}, #{boardContents}, #{boardAuthor}, #{boardRegDate})
+          (#{boardSubject}, #{boardContents}, #{boardAuthor}, #{boardRegDate}, #{boardRegUserUid}, #{boardRegUserName})
 
         <selectKey keyProperty="boardUid" resultType="int" order="AFTER">
             SELECT LAST_INSERT_ID();
@@ -19,7 +19,9 @@
          SUBJECT as boardSubject,
          CONTENTS as boardContents,
          AUTHOR as boardAuthor,
-         REG_DATE as boardRegDate
+         REG_DATE as boardRegDate,
+         REG_USER_UID as boardRegUserUid,
+         REG_USER_NAME as boardRegUserName
         FROM BOARD
     </select>
 
@@ -29,7 +31,9 @@
          SUBJECT as boardSubject,
          CONTENTS as boardContents,
          AUTHOR as boardAuthor,
-         REG_DATE as boardRegDate
+         REG_DATE as boardRegDate,
+         REG_USER_UID as boardRegUserUid,
+         REG_USER_NAME as boardRegUserName
         FROM BOARD
         WHERE BOARD_UID = #{boardUid}
     </select>
