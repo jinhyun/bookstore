@@ -54,6 +54,8 @@
     <script type="text/html" id="commentTemplate">
         <div data-id="commentDiv_idx" data-class="commentDiv_class">
             <input type="hidden" data-id="boardCommentUid_idx" data-value="boardCommentUid">
+            <input type="hidden" data-id="boardCommentUserUid_idx" data-value="boardCommentUserUid">
+
             <div data-id="commentUserNameDiv_idx" data-class="commentUserNameDiv_class" data-content="userName"></div>
             <div data-id="commentRegDateDiv_idx"  data-class="commentRegDateDiv_class" data-content="regDate"></div>
             <div data-id="commentFuncDiv_idx" data-class="commentFuncDiv_class">

@@ -39,3 +39,11 @@
 .commentContentsDiv {
     clear: both;
 }
+
+.displayNone {
+    display: none;
+}
+
+.displayBlock {
+    display: block;
+}

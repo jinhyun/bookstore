@@ -202,11 +202,21 @@ function deleteBoardComment(element) {
   });
 }
 
+function commentFuncClass(loginUserUid, boardCommentUserUid) {
+  if (loginUserUid == boardCommentUserUid) {
+    return "commentFuncDiv";
+
+  } else {
+    return "displayNone";
+  }
+}
+
 function addBoardComment(boardComments) {
-  var boardCommentsTemplate, lastCommentRowIdx, boardComment;
+  var boardCommentsTemplate, lastCommentRowIdx, boardComment, loginUserUid;
 
   boardCommentsTemplate = [];
   lastCommentRowIdx = parseInt($("#lastCommentRowIdx").val()) + 1;
+  loginUserUid = $("#loginUserUid").val();
 
   for (var i = 0; i < boardComments.length; i++) {
     boardComment = {
@@ -215,6 +225,9 @@ function addBoardComment(boardComments) {
 
       boardCommentUid_idx: "boardCommentUid_" + lastCommentRowIdx,
       boardCommentUid: boardComments[i].boardCommentUid,
+
+      boardCommentUserUid_idx: "boardCommentUserUid_" + lastCommentRowIdx,
+      boardCommentUserUid: boardComments[i].boardCommentUserUid,
 
       commentUserNameDiv_idx: "commentUserNameDiv_" + lastCommentRowIdx,
       commentUserNameDiv_class: "commentUserNameDiv",
@@ -225,7 +238,7 @@ function addBoardComment(boardComments) {
       regDate: boardComments[i].boardCommentRegDate,
 
       commentFuncDiv_idx: "commentFuncDiv",
-      commentFuncDiv_class: "commentFuncDiv",
+      commentFuncDiv_class: commentFuncClass(loginUserUid, boardComments[i].boardCommentUserUid),
 
       commentUpdateDeleteDiv_idx: "commentUpdateDeleteDiv_" + lastCommentRowIdx,
       showBoardCommentFormSpan_idx: "showBoardCommentFormSpan_" + lastCommentRowIdx,
