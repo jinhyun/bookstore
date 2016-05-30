@@ -31,8 +31,8 @@
             <input id="loginUserUid" name="loginUserUid" type="hidden" value="<c:out value='${loginUser.userUid}'/>">
 
             <div id="boardFuncDiv" class="displayNone">
-                <button id="updateBoardFormBtn">수정</button>
-                <button id="deleteBoardBtn">삭제</button>
+                <button type="button" id="updateBoardFormBtn">수정</button>
+                <button type="button" id="deleteBoardBtn">삭제</button>
             </div>
             <div>
                 <p>제목: ${board.boardSubject}</p>

@@ -24,8 +24,8 @@
         <h1>List of Boards</h1>
         <table class="boardsTable">
             <thead>
-            <th>제목</th>
-            <th>저자</th>
+                <th>제목</th>
+                <th>저자</th>
             </thead>
             <tbody>
             <c:forEach var="board" items="${boards}" varStatus="status">

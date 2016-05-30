@@ -24,7 +24,7 @@
         <h1 id="createH1" style="display: none">Create a new Board</h1>
         <h1 id="updateH1" style="display: none">Update a Board</h1>
         <form id="boardCreateForm" name="boardCreateForm">
-            <input type="text" id="boardUid" name="boardUid" value="<c:out value="${board.boardUid}"/>">
+            <input type="hidden" id="boardUid" name="boardUid" value="<c:out value="${board.boardUid}"/>">
 
             <div>
                 <p>도서명: <input id="boardSubject" name="boardSubject" type="text" value="<c:out value="${board.boardSubject}"/>"></p>

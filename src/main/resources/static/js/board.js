@@ -69,6 +69,7 @@ function deleteBoard() {
     action: "/board/delete",
     method: "post"
   });
+  form.submit();
 }
 
 function gotoUpdateBoardForm() {
@@ -228,6 +229,11 @@ function showBoardCommentFuncBtns(loginUserUid, boardCommentUserUid) {
 }
 
 function addBoardComment(boardComments) {
+  if (!$.isArray(boardComments)){
+    var boardCommentList = [];
+    boardCommentList.push(boardComments);
+    boardComments = boardCommentList;
+  }
   var boardCommentsTemplate, lastCommentRowIdx, boardComment, loginUserUid;
 
   boardCommentsTemplate = [];
@@ -270,9 +276,15 @@ function addBoardComment(boardComments) {
     };
 
     boardCommentsTemplate.push(boardComment);
-    lastCommentRowIdx = lastCommentRowIdx + 1;
+
+    if (i < (boardComments.length - 1)) {
+      // 마지막 카운트는 제외
+      lastCommentRowIdx = lastCommentRowIdx + 1;
+    }
   }
 
   $("#lastCommentRowIdx").val(lastCommentRowIdx);
-  $("#comment-container").loadTemplate($("#commentTemplate"), boardCommentsTemplate);
+  $("#comment-container").loadTemplate($("#commentTemplate"), boardCommentsTemplate, {
+    append: true
+  });
 }
