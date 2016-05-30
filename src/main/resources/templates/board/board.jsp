@@ -27,7 +27,7 @@
         <h1>Board detail</h1>
         <form id="boardDetailForm" name="boardDetailForm">
             <input id="boardUid" name="boardUid" type="hidden" value="<c:out value='${board.boardUid}'/>">
-            <input id="loginUserUid" name="loginUserUid" type="hidden" value="<c:out value='${loginUser.loginUserUid}'/>">
+            <input id="loginUserUid" name="loginUserUid" type="text" value="<c:out value='${loginUser.userUid}'/>">
             <div>
                 <button id="updateBoardFormBtn">수정</button>
                 <button id="deleteBoardBtn">삭제</button>

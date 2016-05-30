@@ -2,6 +2,7 @@ package com.bookstore.board.controller;
 
 import com.bookstore.board.domain.Board;
 import com.bookstore.board.service.BoardService;
+import com.bookstore.user.domain.CurrentUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,7 @@ public class BoardController {
     @RequestMapping(value = "/board/{boardUid}", method = RequestMethod.GET)
     public String getBoardPage(@PathVariable int boardUid, Model model) {
         model.addAttribute("board", boardService.getBoardByBoardUid(boardUid));
+        model.addAttribute("loginUser", CurrentUser.getCurrentUser());
         return "board/board";
     }
 
