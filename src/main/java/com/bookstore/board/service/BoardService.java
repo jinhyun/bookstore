@@ -2,7 +2,6 @@ package com.bookstore.board.service;
 
 import com.bookstore.board.dao.BoardDao;
 import com.bookstore.board.domain.Board;
-import com.bookstore.board.domain.BoardComment;
 import com.bookstore.user.domain.CurrentUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
