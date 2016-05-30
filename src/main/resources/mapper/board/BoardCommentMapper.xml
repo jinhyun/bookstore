@@ -34,4 +34,8 @@
     <delete id="deleteBoardComment" parameterType="BoardComment">
         DELETE FROM BOARD_COMMENT WHERE BOARD_COMMENT_UID = #{boardCommentUid}
     </delete>
+
+    <delete id="deleteBoardCommentByBoardUid" parameterType="int">
+        DELETE FROM BOARD_COMMENT WHERE BOARD_UID = #{boardUid}
+    </delete>
 </mapper>

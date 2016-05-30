@@ -2,6 +2,7 @@ package com.bookstore.board.service;
 
 import com.bookstore.board.dao.BoardDao;
 import com.bookstore.board.domain.Board;
+import com.bookstore.board.domain.BoardComment;
 import com.bookstore.user.domain.CurrentUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,6 +16,9 @@ import java.util.*;
 public class BoardService {
     @Autowired
     private BoardDao boardDao;
+
+    @Autowired
+    private BoardCommentService boardCommentService;
 
     public List<Board> getAllBoards() {
         return boardDao.getAllBoards();
@@ -57,7 +61,7 @@ public class BoardService {
             throw new NullPointerException("BoardUid is not found");
         }
 
-        // TODO: 댓글 삭제
+        int deletedRows = boardCommentService.deleteBoardCommentByBoardUid(board.getBoardUid());
         return boardDao.deleteBoard(board);
     }
 }
