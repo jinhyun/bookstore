@@ -1,38 +1,56 @@
 function initBoardCreate() {
   showByFormType();
+  bindBoard();
 }
 
-function showByFormType() {
+function bindBoard() {
+  $("#boardSubmit").bind("click", function() {
+    submitByFormType();
+  });
+}
+
+function submitByFormType() {
+  var form, action;
+
   if (formType() == 'update') {
-    var form, inputBoardUidElement;
-    $("#updateH1").show();
-
-    form = document.getElementById("boardCreateForm");
-    form.action = "/board/update";
-    form.method = "post";
-
-    inputBoardUidElement = document.createElement("input");
-    inputBoardUidElement.name = "boardUid";
-    inputBoardUidElement.value = form.dataset.boardUid;
-    inputBoardUidElement.type = "hidden";
-    form.appendChild(inputBoardUidElement);
+    action = "/board/update";
 
   } else if (formType() == 'create') {
-    $("#createH1").show();
-
-    // for Dev
-    $("#boardSubject").val("new Subject");
-    $("#boardContents").val("new Contents");
-    $("#boardAuthor").val("new Author");
+    action = "/board/create";
   }
+
+  form = $("#boardCreateForm");
+  form.attr({
+    action: action,
+    method: "post"
+  });
+
+  form.submit();
 }
 
-
 function formType() {
-  if ($("#boardCreateForm").data("boardUid") > 0) {
+  if ($("#boardUid").val() > 0) {
     return 'update';
 
   } else {
     return 'create';
   }
+}
+
+function showByFormType() {
+  if (formType() == 'update') {
+    $("#updateH1").show();
+
+  } else if (formType() == 'create') {
+    $("#createH1").show();
+    $("#boardUid").remove();
+
+    forDev();
+  }
+}
+
+function forDev() {
+  $("#boardSubject").val("new Subject");
+  $("#boardContents").val("new Contents");
+  $("#boardAuthor").val("new Author");
 }

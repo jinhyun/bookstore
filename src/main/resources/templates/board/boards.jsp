@@ -30,10 +30,12 @@
             <tbody>
             <c:forEach var="board" items="${boards}" varStatus="status">
                 <tr style="border: 1px solid;">
-                    <td id="boardSubjectTd_${status.index}" name="boardSubjectTd_${status.index}" data-board-uid="<c:out value='${board.boardUid}'/>">
+                    <input type="hidden" id="boardUid_${status.index+1}" name="boardUid_${status.index+1}" value="<c:out value='${board.boardUid}'/>">
+
+                    <td id="boardSubjectTd_${status.index+1}" name="boardSubjectTd_${status.index+1}">
                         <span><c:out value="${board.boardSubject}"/></span>
                     </td>
-                    <td id="boardAuthorTd_${status.index}" name="boardAuthorTd_${status.index}">
+                    <td id="boardAuthorTd_${status.index+1}" name="boardAuthorTd_${status.index+1}">
                         <span><c:out value="${board.boardAuthor}"/></span>
                     </td>
                 </tr>

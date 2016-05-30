@@ -3,23 +3,31 @@ function initBoards() {
 }
 
 function bindBoards () {
-  var boardSubjectElements = $("td[name*=boardSubjectTd]");
+  var boardSubjectElements, commentRowIdx, thatId;
+  boardSubjectElements = $("td[name*=boardSubjectTd]");
 
   for (var i = 0; i < boardSubjectElements.length; i++) {
+
     $("#" + boardSubjectElements[i].id).bind("click", function(){
-      viewBoard($(this).data("board-uid"));
+      thatId = this.id;
+      commentRowIdx = thatId.substring(thatId.lastIndexOf("_") + 1);
+
+      viewBoard($("#boardUid_" + commentRowIdx).val());
     });
   }
 }
 
 function viewBoard(boardUid) {
-  var form = document.createElement("form");
-  form.action = "/board/" + boardUid;
-  form.method = "get";
-  form.style.display = "none";
-  document.body.appendChild(form);
+  var form;
 
+  form = $("<form>");
+  form.attr({
+    action: "/board/" + boardUid,
+    method: "get"
+  });
+
+  form.hide();
+  form.appendTo($(document.body));
   form.submit();
-
-  document.body.removeChild(form);
+  form.remove();
 }

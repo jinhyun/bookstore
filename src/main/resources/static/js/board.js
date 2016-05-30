@@ -48,18 +48,11 @@ function deleteBoard() {
     return;
   }
 
-  var form, inputBoardUidElement;
-  form = document.getElementById("boardDetailForm");
-  form.action = "/board/delete";
-  form.method = "post";
-
-  inputBoardUidElement = document.createElement("input");
-  inputBoardUidElement.name = "boardUid";
-  inputBoardUidElement.value = form.dataset.boardUid;
-  inputBoardUidElement.type = "hidden";
-
-  form.appendChild(inputBoardUidElement);
-  form.submit();
+  var form = $("#boardDetailForm");
+  form.attr({
+    action: "/board/delete",
+    method: "post"
+  });
 }
 
 function gotoUpdateBoardForm() {
@@ -68,9 +61,11 @@ function gotoUpdateBoardForm() {
     return;
   }
 
-  var form = document.getElementById("boardDetailForm");
-  form.action = "/board/updateForm";
-  form.method = "post";
+  var form = $("#boardDetailForm");
+  form.attr({
+    action: "/board/updateForm",
+    method: "post"
+  });
   form.submit();
 }
 
@@ -84,17 +79,19 @@ function showBoardCommentForm(element) {
 
   elementId = element.id;
   commentRowIdx = elementId.substring(elementId.lastIndexOf("_") + 1);
-  commentContentsDivElement = document.getElementById("commentContentsDiv_" + commentRowIdx);
+  commentContentsDivElement = $("#commentContentsDiv_" + commentRowIdx);
 
-  textareaNode = document.createElement("textarea");
-  textareaNode.innerText = commentContentsDivElement.innerText;
-  textareaNode.className = "fixCommentTextArea";
-  textareaNode.cols = 50;
-  textareaNode.rows = 4;
-  textareaNode.id = "commentContentsTextarea_" + commentRowIdx;
+  textareaNode = $("<textarea>");
+  textareaNode.attr({
+    id: "commentContentsTextarea_" + commentRowIdx,
+    className: "fixCommentTextArea",
+    cols: 50,
+    rows: 4
+  });
 
-  commentContentsDivElement.innerText = "";
-  commentContentsDivElement.appendChild(textareaNode);
+  textareaNode.val(commentContentsDivElement.text());
+  commentContentsDivElement.text("");
+  textareaNode.appendTo(commentContentsDivElement);
 
   $("#commentUpdateDeleteDiv_" + commentRowIdx).hide();
   $("#commentConfirmCancelDiv_" + commentRowIdx).show();
@@ -105,10 +102,10 @@ function cancelBoardComment(element) {
 
   elementId = element.id;
   commentRowIdx = elementId.substring(elementId.lastIndexOf("_") + 1);
-  commentContentsTextareaElement = document.getElementById("commentContentsTextarea_" + commentRowIdx);
-  commentContentsDivElement = document.getElementById("commentContentsDiv_" + commentRowIdx);
+  commentContentsTextareaElement = $("#commentContentsTextarea_" + commentRowIdx);
+  commentContentsDivElement = $("#commentContentsDiv_" + commentRowIdx);
 
-  commentContentsDivElement.innerText = commentContentsTextareaElement.value;
+  commentContentsDivElement.text(commentContentsTextareaElement.val());
   commentContentsTextareaElement.remove();
 
   $("#commentUpdateDeleteDiv_" + commentRowIdx).show();
@@ -136,12 +133,11 @@ function updateBoardComment(element) {
       var updatedBoardCommentContents, commentContentsTextareaElement, commentContentsDivElement;
 
       updatedBoardCommentContents = resultBoardComment.boardCommentContents;
-      // textarea > div
 
-      commentContentsTextareaElement = document.getElementById("commentContentsTextarea_" + commentRowIdx);
-      commentContentsDivElement = document.getElementById("commentContentsDiv_" + commentRowIdx);
+      commentContentsTextareaElement = $("#commentContentsTextarea_" + commentRowIdx);
+      commentContentsDivElement = $("#commentContentsDiv_" + commentRowIdx);
 
-      commentContentsDivElement.innerText = updatedBoardCommentContents;
+      commentContentsDivElement.text(updatedBoardCommentContents);
       commentContentsTextareaElement.remove();
 
       $("#commentUpdateDeleteDiv_" + commentRowIdx).show();
@@ -198,7 +194,7 @@ function deleteBoardComment(element) {
     contentType: "application/json",
     async: false,
     success: function() {
-      document.getElementById("commentDiv_" + commentRowIdx).remove();
+      $("#commentDiv_" + commentRowIdx).remove();
     },
     error: function() {
 
