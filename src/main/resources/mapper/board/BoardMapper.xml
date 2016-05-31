@@ -6,7 +6,7 @@
         INSERT INTO BOARD
           (SUBJECT, CONTENTS, AUTHOR, REG_DATE, REG_USER_UID, REG_USER_NAME)
         VALUES
-          (#{boardSubject}, #{boardContents}, #{boardAuthor}, #{boardRegDate}, #{boardRegUserUid}, #{boardRegUserName})
+          (#{boardSubject}, #{boardContents}, #{boardAuthor}, now(), #{boardRegUserUid}, #{boardRegUserName})
 
         <selectKey keyProperty="boardUid" resultType="int" order="AFTER">
             SELECT LAST_INSERT_ID();

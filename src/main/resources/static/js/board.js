@@ -27,6 +27,8 @@ function bindBoardComment() {
 }
 
 function getBoardComments() {
+  addBoardCommentJsp();
+  return;
   var boardUid = $('#boardUid').val();
 
   $.ajax({
@@ -35,12 +37,19 @@ function getBoardComments() {
     contentType: "application/json",
     async: false,
     success: function(boardComments) {
-      addBoardComment(boardComments);
+      debugger;
+      //addBoardComment(boardComments);
+      addBoardCommentJsp(boardComments);
     },
     error: function() {
 
     }
   });
+}
+
+function addBoardCommentJsp(boardComments) {
+  var boardUid = $('#boardUid').val();
+  $("#comment-container").load('/boardComments/' + boardUid);
 }
 
 function showBoardFuncBtns() {
@@ -91,16 +100,14 @@ function isAuthUpdateDelete() {
   return true;
 }
 
-function showBoardCommentForm(element) {
-  var commentRowIdx, commentContentsDivElement, textareaNode, elementId;
+function showBoardCommentForm(boardCommentUid) {
+  var commentContentsDivElement, textareaNode;
 
-  elementId = element.id;
-  commentRowIdx = elementId.substring(elementId.lastIndexOf("_") + 1);
-  commentContentsDivElement = $("#commentContentsDiv_" + commentRowIdx);
+  commentContentsDivElement = $("#commentContentsDiv_" + boardCommentUid);
 
   textareaNode = $("<textarea>");
   textareaNode.attr({
-    id: "commentContentsTextarea_" + commentRowIdx,
+    id: "commentContentsTextarea_" + boardCommentUid,
     className: "fixCommentTextArea",
     cols: 50,
     rows: 4
@@ -110,34 +117,32 @@ function showBoardCommentForm(element) {
   commentContentsDivElement.text("");
   textareaNode.appendTo(commentContentsDivElement);
 
-  $("#commentUpdateDeleteDiv_" + commentRowIdx).hide();
-  $("#commentConfirmCancelDiv_" + commentRowIdx).show();
+  $("#commentUpdateDeleteDiv_" + boardCommentUid).hide();
+  $("#commentConfirmCancelDiv_" + boardCommentUid).show();
+
+  $("#showFormDeleteFuncDiv_" + boardCommentUid).hide();
+  $("#updateCancelFuncDiv_" + boardCommentUid).show();
 }
 
-function cancelBoardComment(element) {
-  var commentRowIdx, commentContentsTextareaElement, commentContentsDivElement, elementId;
+function cancelBoardComment(boardCommentUid) {
+  var commentContentsTextareaElement = $("#commentContentsTextarea_" + boardCommentUid);
 
-  elementId = element.id;
-  commentRowIdx = elementId.substring(elementId.lastIndexOf("_") + 1);
-  commentContentsTextareaElement = $("#commentContentsTextarea_" + commentRowIdx);
-  commentContentsDivElement = $("#commentContentsDiv_" + commentRowIdx);
-
-  commentContentsDivElement.text(commentContentsTextareaElement.val());
+  $("#commentContentsDiv_" + boardCommentUid).text(commentContentsTextareaElement.val());
   commentContentsTextareaElement.remove();
 
-  $("#commentUpdateDeleteDiv_" + commentRowIdx).show();
-  $("#commentConfirmCancelDiv_" + commentRowIdx).hide();
+  $("#commentUpdateDeleteDiv_" + boardCommentUid).show();
+  $("#commentConfirmCancelDiv_" + boardCommentUid).hide();
+
+  $("#showFormDeleteFuncDiv_" + boardCommentUid).show();
+  $("#updateCancelFuncDiv_" + boardCommentUid).hide();
 }
 
-function updateBoardComment(element) {
+function updateBoardComment(boardCommentUid) {
   var commentRowIdx, boardComment, elementId;
 
-  elementId = element.id;
-  commentRowIdx = elementId.substring(elementId.lastIndexOf("_") + 1);
-
   boardComment = {
-    boardCommentUid  : $("#boardCommentUid_" + commentRowIdx).val(),
-    boardCommentContents: $("#commentContentsTextarea_" + commentRowIdx).val()
+    boardCommentUid  : boardCommentUid,
+    boardCommentContents: $("#commentContentsTextarea_" + boardCommentUid).val()
   };
 
   $.ajax({
@@ -151,14 +156,17 @@ function updateBoardComment(element) {
 
       updatedBoardCommentContents = resultBoardComment.boardCommentContents;
 
-      commentContentsTextareaElement = $("#commentContentsTextarea_" + commentRowIdx);
-      commentContentsDivElement = $("#commentContentsDiv_" + commentRowIdx);
+      commentContentsTextareaElement = $("#commentContentsTextarea_" + resultBoardComment.boardCommentUid);
+      commentContentsDivElement = $("#commentContentsDiv_" + resultBoardComment.boardCommentUid);
 
       commentContentsDivElement.text(updatedBoardCommentContents);
       commentContentsTextareaElement.remove();
 
       $("#commentUpdateDeleteDiv_" + commentRowIdx).show();
       $("#commentConfirmCancelDiv_" + commentRowIdx).hide();
+
+      $("#showFormDeleteFuncDiv_" + boardCommentUid).show();
+      $("#updateCancelFuncDiv_" + boardCommentUid).hide();
     },
     error: function() {
 
@@ -191,17 +199,13 @@ function createBoardComment() {
   });
 }
 
-function deleteBoardComment(element) {
+function deleteBoardComment(boardCommentUid) {
   if (confirm("댓글을 삭제하시겠습니까?") == false) {
     return;
   }
-  var boardComment, commentRowIdx, elementId;
 
-  elementId = element.id;
-  commentRowIdx = elementId.substring(elementId.lastIndexOf("_") + 1);
-
-  boardComment = {
-    boardCommentUid: $("#boardCommentUid_" + commentRowIdx).val()
+  var boardComment = {
+    boardCommentUid: boardCommentUid
   };
 
   $.ajax({
@@ -211,7 +215,7 @@ function deleteBoardComment(element) {
     contentType: "application/json",
     async: false,
     success: function() {
-      $("#commentDiv_" + commentRowIdx).remove();
+      $("#commentDiv_" + boardCommentUid).remove();
     },
     error: function() {
 

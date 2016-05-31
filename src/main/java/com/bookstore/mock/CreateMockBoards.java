@@ -34,7 +34,6 @@ public class CreateMockBoards {
         first.setBoardSubject("채식주의자");
         first.setBoardContents("한강 연작소설 2016 맨부커상 인터내셔널 수상");
         first.setBoardAuthor("한강");
-        first.setBoardRegDate(new Date());
         first.setBoardRegUserUid(1);
         first.setBoardRegUserName("IronMan");
         boards.add(first);
@@ -43,7 +42,6 @@ public class CreateMockBoards {
         second.setBoardSubject("종의 기");
         second.setBoardContents("[7년의밤] 정유정 작가 3년만의 신작");
         second.setBoardAuthor("정유정");
-        second.setBoardRegDate(new Date());
         second.setBoardRegUserUid(1);
         second.setBoardRegUserName("IronMan");
         boards.add(second);
@@ -52,7 +50,6 @@ public class CreateMockBoards {
         third.setBoardSubject("완벽하지 않은 것들에 대한 사랑");
         third.setBoardContents("혜민스님 4년 만의 신작! 나를 아껴주는 따스한 이야기");
         third.setBoardAuthor("혜민");
-        third.setBoardRegDate(new Date());
         third.setBoardRegUserUid(1);
         third.setBoardRegUserName("IronMan");
         boards.add(third);
@@ -61,7 +58,6 @@ public class CreateMockBoards {
         fourth.setBoardSubject("못 참는 아이 욱하는 부모");
         fourth.setBoardContents("‘욱’하셨나요? 오은영멘토의 감정조절육아");
         fourth.setBoardAuthor("오은영");
-        fourth.setBoardRegDate(new Date());
         fourth.setBoardRegUserUid(1);
         fourth.setBoardRegUserName("IronMan");
         boards.add(fourth);
@@ -70,7 +66,6 @@ public class CreateMockBoards {
         fifth.setBoardSubject("사피엔스");
         fifth.setBoardContents("인류 문명화에 대한 거대한 서사! 이제 우리는 무엇을 인간이라고 할 것인가");
         fifth.setBoardAuthor("유발 하라리");
-        fifth.setBoardRegDate(new Date());
         fifth.setBoardRegUserUid(1);
         fifth.setBoardRegUserName("IronMan");
         boards.add(fifth);
@@ -81,7 +76,6 @@ public class CreateMockBoards {
             boardData.setBoardSubject("subject: " + conStrI);
             boardData.setBoardContents("content: " + conStrI);
             boardData.setBoardAuthor("author: " + conStrI);
-            boardData.setBoardRegDate(new Date());
             boardData.setBoardRegUserUid(2);
             boardData.setBoardRegUserName("CaptainAmerica");
             boards.add(boardData);
