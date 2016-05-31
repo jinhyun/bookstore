@@ -6,6 +6,7 @@ import com.bookstore.user.domain.CurrentUser;
 import com.bookstore.user.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -22,8 +23,9 @@ public class BoardCommentController {
     }
 
     @RequestMapping(value = "/boardComments/{boardUid}", method = RequestMethod.GET)
-    public @ResponseBody List<BoardComment> getBoardComments(@PathVariable int boardUid) {
-        return boardCommentService.getBoardCommentsByBoardUid(boardUid);
+    public String getBoardComments(@PathVariable int boardUid, Model model) {
+        model.addAttribute("boardComments", boardCommentService.getBoardCommentsByBoardUid(boardUid));
+        return "board/board_comments";
     }
 
     @RequestMapping(value = "/boardComment/update", method = RequestMethod.POST)

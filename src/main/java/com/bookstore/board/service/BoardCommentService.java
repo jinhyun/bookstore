@@ -25,7 +25,6 @@ public class BoardCommentService {
 
         boardComment.setBoardCommentUserUid(loginUser.getUserUid());
         boardComment.setBoardCommentUserName(loginUser.getName());
-        boardComment.setBoardCommentRegDate(new Date());
 
         int savedRow = boardCommentDao.createBoardComment(boardComment);
 

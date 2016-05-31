@@ -1,13 +1,11 @@
 package com.bookstore.board.domain;
 
-import java.util.Date;
-
 public class BoardComment {
     private int boardCommentUid;
     private String boardCommentContents;
     private int boardCommentUserUid;
     private String boardCommentUserName;
-    private Date boardCommentRegDate;
+    private String boardCommentRegDate;
     private int boardUid;
 
     public int getBoardCommentUid() {
@@ -42,11 +40,11 @@ public class BoardComment {
         this.boardCommentUserName = boardCommentUserName;
     }
 
-    public Date getBoardCommentRegDate() {
+    public String getBoardCommentRegDate() {
         return boardCommentRegDate;
     }
 
-    public void setBoardCommentRegDate(Date boardCommentRegDate) {
+    public void setBoardCommentRegDate(String boardCommentRegDate) {
         this.boardCommentRegDate = boardCommentRegDate;
     }
 

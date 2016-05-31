@@ -7,7 +7,7 @@ public class Board {
     private String boardSubject;
     private String boardContents;
     private String boardAuthor;
-    private Date boardRegDate;
+    private String boardRegDate;
     private int boardRegUserUid;
     private String boardRegUserName;
 
@@ -43,11 +43,11 @@ public class Board {
         this.boardAuthor = boardAuthor;
     }
 
-    public Date getBoardRegDate() {
+    public String getBoardRegDate() {
         return boardRegDate;
     }
 
-    public void setBoardRegDate(Date boardRegDate) {
+    public void setBoardRegDate(String boardRegDate) {
         this.boardRegDate = boardRegDate;
     }
 

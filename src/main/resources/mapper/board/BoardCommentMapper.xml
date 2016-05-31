@@ -6,7 +6,7 @@
         INSERT INTO BOARD_COMMENT
         (CONTENTS, USER_UID, USER_NAME, REG_DATE, BOARD_UID)
         VALUES
-        (#{boardCommentContents}, #{boardCommentUserUid}, #{boardCommentUserName}, #{boardCommentRegDate}, #{boardUid})
+        (#{boardCommentContents}, #{boardCommentUserUid}, #{boardCommentUserName}, now(), #{boardUid})
         <selectKey keyProperty="boardCommentUid" resultType="int" order="AFTER">
             SELECT LAST_INSERT_ID()
         </selectKey>
@@ -18,7 +18,7 @@
             CONTENTS as boardCommentContents,
             USER_UID as boardCommentUseruid,
             USER_NAME as boardCommentUserName,
-            REG_DATE as boardCommentRegDate,
+            DATE_FORMAT(REG_DATE, '%Y.%m.%d %h:%i') as boardCommentRegDate,
             BOARD_UID as boardUid
         FROM BOARD_COMMENT
         WHERE BOARD_UID = #{boardUid}
