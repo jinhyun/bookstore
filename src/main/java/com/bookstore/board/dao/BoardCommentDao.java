@@ -36,4 +36,9 @@ public class BoardCommentDao implements BoardCommentMapper {
     public int deleteBoardCommentByBoardUid(int boardUid) {
         return sqlSession.delete("deleteBoardCommentByBoardUid", boardUid);
     }
+
+    @Override
+    public BoardComment getBoardCommentByBoardCommentUid(int boardCommentUid) {
+        return sqlSession.selectOne("findBoardCommentByBoardCommentUid", boardCommentUid);
+    }
 }

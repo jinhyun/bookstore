@@ -24,17 +24,26 @@
         WHERE BOARD_UID = #{boardUid}
     </select>
 
+    <select id="findBoardCommentByBoardCommentUid" parameterType="int" resultType="BoardComment">
+        SELECT
+            BOARD_COMMENT_UID as boardCommentUid,
+            CONTENTS as boardCommentContents,
+            USER_UID as boardCommentUseruid,
+            USER_NAME as boardCommentUserName,
+            DATE_FORMAT(REG_DATE, '%Y.%m.%d %h:%i') as boardCommentRegDate,
+            BOARD_UID as boardUid
+        FROM BOARD_COMMENT
+        WHERE BOARD_COMMENT_UID = #{boardCommentUid}
+    </select>
     <update id="updateBoardComment" parameterType="BoardComment">
         UPDATE BOARD_COMMENT
         SET
           CONTENTS = #{boardCommentContents}
         WHERE BOARD_COMMENT_UID = #{boardCommentUid}
     </update>
-
     <delete id="deleteBoardComment" parameterType="BoardComment">
         DELETE FROM BOARD_COMMENT WHERE BOARD_COMMENT_UID = #{boardCommentUid}
     </delete>
-
     <delete id="deleteBoardCommentByBoardUid" parameterType="int">
         DELETE FROM BOARD_COMMENT WHERE BOARD_UID = #{boardUid}
     </delete>

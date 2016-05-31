@@ -16,4 +16,6 @@ public interface BoardCommentMapper {
     int deleteBoardComment(BoardComment boardComment);
 
     int deleteBoardCommentByBoardUid(int boardUid);
+
+    BoardComment getBoardCommentByBoardCommentUid(int boardCommentUid);
 }

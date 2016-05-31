@@ -74,4 +74,12 @@ public class BoardCommentService {
 
         return boardCommentDao.deleteBoardCommentByBoardUid(boardUid);
     }
+
+    public BoardComment getBoardCommentByBoardCommentUid(int boardCommentUid) {
+        if (boardCommentUid < 1) {
+            throw new IllegalArgumentException("boardCommentUid must not be null");
+        }
+
+        return boardCommentDao.getBoardCommentByBoardCommentUid(boardCommentUid);
+    }
 }

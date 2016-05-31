@@ -9,6 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class BoardCommentController {
     @Autowired
@@ -25,6 +28,17 @@ public class BoardCommentController {
     public String getBoardComments(@PathVariable int boardUid, Model model) {
         model.addAttribute("boardComments", boardCommentService.getBoardCommentsByBoardUid(boardUid));
         model.addAttribute("loginUser", CurrentUser.getCurrentUser());
+
+        return "board/board_comments";
+    }
+
+    @RequestMapping(value = "/boardComment/{boardCommentUid}", method = RequestMethod.GET)
+    public String getBoardComment(@PathVariable int boardCommentUid, Model model) {
+        List <BoardComment> boardComments = new ArrayList();
+        boardComments.add(boardCommentService.getBoardCommentByBoardCommentUid(boardCommentUid));
+        model.addAttribute("boardComments", boardComments);
+        model.addAttribute("loginUser", CurrentUser.getCurrentUser());
+
         return "board/board_comments";
     }
 

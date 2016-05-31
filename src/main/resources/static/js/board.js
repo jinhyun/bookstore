@@ -30,36 +30,23 @@ function getBoardComments() {
 }
 
 function deleteBoard() {
-  if (!isAuthUpdateDelete) {
-    alert('권한이 없습니다.');
-    return;
-  }
-
   var form = $("#boardDetailForm");
   form.attr({
     action: "/board/delete",
     method: "post"
   });
+
   form.submit();
 }
 
 function gotoUpdateBoardForm() {
-  if (!isAuthUpdateDelete) {
-    alert('권한이 없습니다.');
-    return;
-  }
-
   var form = $("#boardDetailForm");
   form.attr({
     action: "/board/updateForm",
     method: "post"
   });
-  form.submit();
-}
 
-// TODO: 수정권한 체크
-function isAuthUpdateDelete() {
-  return true;
+  form.submit();
 }
 
 function showBoardCommentForm(boardCommentUid) {
@@ -100,9 +87,7 @@ function cancelBoardComment(boardCommentUid) {
 }
 
 function updateBoardComment(boardCommentUid) {
-  var commentRowIdx, boardComment, elementId;
-
-  boardComment = {
+  var boardComment = {
     boardCommentUid  : boardCommentUid,
     boardCommentContents: $("#commentContentsTextarea_" + boardCommentUid).val()
   };
@@ -113,22 +98,8 @@ function updateBoardComment(boardCommentUid) {
     data : JSON.stringify(boardComment),
     contentType: "application/json",
     async: false,
-    success: function(resultBoardComment) {
-      var updatedBoardCommentContents, commentContentsTextareaElement, commentContentsDivElement;
-
-      updatedBoardCommentContents = resultBoardComment.boardCommentContents;
-
-      commentContentsTextareaElement = $("#commentContentsTextarea_" + resultBoardComment.boardCommentUid);
-      commentContentsDivElement = $("#commentContentsDiv_" + resultBoardComment.boardCommentUid);
-
-      commentContentsDivElement.text(updatedBoardCommentContents);
-      commentContentsTextareaElement.remove();
-
-      $("#commentUpdateDeleteDiv_" + commentRowIdx).show();
-      $("#commentConfirmCancelDiv_" + commentRowIdx).hide();
-
-      $("#showFormDeleteFuncDiv_" + boardCommentUid).show();
-      $("#updateCancelFuncDiv_" + boardCommentUid).hide();
+    success: function() {
+      getBoardComments();
     },
     error: function() {
 
@@ -137,23 +108,18 @@ function updateBoardComment(boardCommentUid) {
 }
 
 function createBoardComment() {
-  var url, method, boardComment;
-  url = "/boardComment/create";
-  method = 'post';
-
-  boardComment = {
+  var boardComment = {
     boardCommentContents : $("#createCommentTextArea").val(),
     boardUid : $('#boardUid').val()
   };
 
   $.ajax({
-    url: url,
-    method: method,
+    url: "/boardComment/create",
+    method: "post",
     data : JSON.stringify(boardComment),
     contentType: "application/json",
-    async: false,
-    success: function(resultBoardComment) {
-      addBoardComment(resultBoardComment);
+    success: function() {
+      getBoardComments();
     },
     error: function() {
 
