@@ -26,14 +26,14 @@
     <div id="section" class="section">
         <h1>Board detail</h1>
         <form id="boardDetailForm" name="boardDetailForm">
-            <input id="boardUid" name="boardUid" type="hidden" value="<c:out value='${board.boardUid}'/>">
-            <input id="boardRegUserUid" name="boardRegUserUid" type="hidden" value="<c:out value='${board.boardRegUserUid}'/>">
-            <input id="loginUserUid" name="loginUserUid" type="hidden" value="<c:out value='${loginUser.userUid}'/>">
+            <input id="boardUid" name="boardUid" type="hidden" value="${board.boardUid}">
+            <input id="boardRegUserUid" name="boardRegUserUid" type="hidden" value="${board.boardRegUserUid}">
+            <input id="loginUserUid" name="loginUserUid" type="hidden" value="${loginUser.userUid}">
 
             <c:if test="${board.boardRegUserUid eq loginUser.userUid}">
             <div id="boardFuncDiv">
-                <button type="button" id="updateBoardFormBtn">수정</button>
-                <button type="button" id="deleteBoardBtn">삭제</button>
+                <button type="button" id="updateBoardFormBtn" onclick="gotoUpdateBoardForm()">수정</button>
+                <button type="button" id="deleteBoardBtn" onclick="deleteBoard()">삭제</button>
             </div>
             </c:if>
             <div>
@@ -51,7 +51,7 @@
 
         <div id="createCommentDiv" class="createCommentDiv">
             <textarea id="createCommentTextArea" name="createCommentTextArea" class="fixCommentTextArea" cols="50" rows="4">멋져요</textarea>
-            <button id="createCommentBtn">등록</button>
+            <button id="createCommentBtn" onclick="createBoardComment()">등록</button>
         </div>
     </div>
 </body>

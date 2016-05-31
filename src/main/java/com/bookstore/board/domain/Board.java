@@ -1,7 +1,5 @@
 package com.bookstore.board.domain;
 
-import java.util.Date;
-
 public class Board {
     private int boardUid;
     private String boardSubject;

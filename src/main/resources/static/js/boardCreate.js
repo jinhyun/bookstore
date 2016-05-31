@@ -1,6 +1,9 @@
 function initBoardCreate() {
-  showByFormType();
   bindBoard();
+
+  if ($("#formType").val() == 'create') {
+    forDev();
+  }
 }
 
 function bindBoard() {
@@ -12,10 +15,10 @@ function bindBoard() {
 function submitByFormType() {
   var form, action;
 
-  if (formType() == 'update') {
+  if ($("#formType").val() == 'update') {
     action = "/board/update";
 
-  } else if (formType() == 'create') {
+  } else if ($("#formType").val() == 'create') {
     action = "/board/create";
   }
 
@@ -26,27 +29,6 @@ function submitByFormType() {
   });
 
   form.submit();
-}
-
-function formType() {
-  if ($("#boardUid").val() > 0) {
-    return 'update';
-
-  } else {
-    return 'create';
-  }
-}
-
-function showByFormType() {
-  if (formType() == 'update') {
-    $("#updateH1").show();
-
-  } else if (formType() == 'create') {
-    $("#createH1").show();
-    $("#boardUid").remove();
-
-    forDev();
-  }
 }
 
 function forDev() {

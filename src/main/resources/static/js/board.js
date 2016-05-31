@@ -1,28 +1,5 @@
 function initBoard() {
-  bindBoard();
-  bindBoardComment();
   getBoardComments();
-}
-
-function bindBoard() {
-  $("#updateBoardFormBtn").bind("click", function() {
-    gotoUpdateBoardForm();
-  });
-
-  $("#deleteBoardBtn").bind("click", function() {
-    if (confirm("게시글 삭제시 댓글도 모두 삭제됩니다. \n삭제하시겠습니까?") == true) {
-      deleteBoard();
-
-    } else {
-      return;
-    }
-  });
-}
-
-function bindBoardComment() {
-  $("#createCommentBtn").bind("click", function() {
-    createBoardComment();
-  });
 }
 
 function getBoardComments() {
@@ -30,13 +7,15 @@ function getBoardComments() {
 }
 
 function deleteBoard() {
-  var form = $("#boardDetailForm");
-  form.attr({
-    action: "/board/delete",
-    method: "post"
-  });
+  if (confirm("게시글 삭제시 댓글도 모두 삭제됩니다. \n삭제하시겠습니까?") == true) {
+    var form = $("#boardDetailForm");
+    form.attr({
+      action: "/board/delete",
+      method: "post"
+    });
 
-  form.submit();
+    form.submit();
+  }
 }
 
 function gotoUpdateBoardForm() {

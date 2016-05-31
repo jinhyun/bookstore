@@ -5,8 +5,8 @@
         <input type="hidden" id="boardCommentUid_${boardComment.boardCommentUid}" value="${boardComment.boardCommentUid}">
         <input type="hidden" id="boardCommentUserUid_${boardComment.boardCommentUid}" value="${boardComment.boardCommentUserUid}">
 
-        <div class="commentUserNameDiv">${boardComment.boardCommentUserName}</div>
-        <div class="commentRegDateDiv">${boardComment.boardCommentRegDate}</div>
+        <div class="commentUserNameDiv"><c:out value="${boardComment.boardCommentUserName}"/></div>
+        <div class="commentRegDateDiv"><c:out value="${boardComment.boardCommentRegDate}"/></div>
 
         <c:if test="${boardComment.boardCommentUserUid eq loginUser.userUid}">
         <div class="commentFuncDiv">
@@ -22,6 +22,6 @@
             </div>
         </div>
         </c:if>
-        <div id="commentContentsDiv_${boardComment.boardCommentUid}" class="commentContentsDiv">${boardComment.boardCommentContents}</div>
+        <div id="commentContentsDiv_${boardComment.boardCommentUid}" class="commentContentsDiv"><c:out value="${boardComment.boardCommentContents}"/></div>
     </div>
 </c:forEach>

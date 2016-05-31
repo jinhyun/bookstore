@@ -21,17 +21,25 @@
 <body>
     <%@ include file="/templates/menu/nav.jsp" %>
     <div id="section" class="section">
-        <h1 id="createH1" style="display: none">Create a new Board</h1>
-        <h1 id="updateH1" style="display: none">Update a Board</h1>
         <form id="boardCreateForm" name="boardCreateForm">
-            <input type="hidden" id="boardUid" name="boardUid" value="<c:out value="${board.boardUid}"/>">
+            <c:choose>
+                <c:when test="${empty board.boardUid || board.boardUid < 1}">
+                    <h1 id="createH1">Create a new Board</h1>
+                    <input type="hidden" id="formType" value="create">
+                </c:when>
+                <c:otherwise>
+                    <h1 id="updateH1">Update a Board</h1>
+                    <input type="hidden" id="boardUid" name="boardUid" value="${board.boardUid}">
+                    <input type="hidden" id="formType" value="update">
+                </c:otherwise>
+            </c:choose>
 
             <div>
                 <p>도서명: <input id="boardSubject" name="boardSubject" type="text" value="<c:out value="${board.boardSubject}"/>"></p>
                 <p>소개글: <textarea id="boardContents" name="boardContents" cols="40" rows="3"><c:out value="${board.boardContents}"/></textarea></p>
                 <p>저자: <input id="boardAuthor" name="boardAuthor" type="text" value="<c:out value="${board.boardAuthor}"/>"></p>
 
-                <p><button type="submit" id="boardSubmit">submit</button></p>
+                <p><button type="submit" id="boardSubmit">저장</button></p>
             </div>
         </form>
     </div>

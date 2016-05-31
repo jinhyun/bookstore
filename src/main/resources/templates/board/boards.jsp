@@ -12,11 +12,6 @@
 
     <%-- JavaScript Module --%>
     <script type="text/javascript" src="<c:url value='/static/js/boards.js'/>"></script>
-    <script>
-        $(document).ready(function() {
-            initBoards();
-        });
-    </script>
 </head>
 <body>
     <%@ include file="/templates/menu/nav.jsp" %>
@@ -30,10 +25,10 @@
             <tbody>
             <c:forEach var="board" items="${boards}" varStatus="status">
                 <tr style="border: 1px solid;">
-                    <input type="hidden" id="boardUid_${status.index+1}" name="boardUid_${status.index+1}" value="<c:out value='${board.boardUid}'/>">
+                    <input type="hidden" id="boardUid_${status.index+1}" name="boardUid_${status.index+1}" value="${board.boardUid}">
 
                     <td id="boardSubjectTd_${status.index+1}" name="boardSubjectTd_${status.index+1}">
-                        <span><c:out value="${board.boardSubject}"/></span>
+                        <span onclick="viewBoard('${board.boardUid}')"><c:out value="${board.boardSubject}"/></span>
                     </td>
                     <td id="boardAuthorTd_${status.index+1}" name="boardAuthorTd_${status.index+1}">
                         <span><c:out value="${board.boardAuthor}"/></span>

@@ -36,6 +36,7 @@ public class BoardCommentController {
     public String getBoardComment(@PathVariable int boardCommentUid, Model model) {
         List <BoardComment> boardComments = new ArrayList();
         boardComments.add(boardCommentService.getBoardCommentByBoardCommentUid(boardCommentUid));
+
         model.addAttribute("boardComments", boardComments);
         model.addAttribute("loginUser", CurrentUser.getCurrentUser());
 
