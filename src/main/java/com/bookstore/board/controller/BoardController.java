@@ -56,6 +56,7 @@ public class BoardController {
     public String updateBoard(@ModelAttribute Board board, Model model) {
         int updatedRow = boardService.updateBoard(board);
         model.addAttribute("board", boardService.getBoardByBoardUid(board.getBoardUid()));
+        model.addAttribute("loginUser", CurrentUser.getCurrentUser());
         return "board/board";
     }
 

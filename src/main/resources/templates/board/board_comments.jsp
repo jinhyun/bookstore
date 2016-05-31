@@ -7,6 +7,8 @@
 
         <div class="commentUserNameDiv">${boardComment.boardCommentUserName}</div>
         <div class="commentRegDateDiv">${boardComment.boardCommentRegDate}</div>
+
+        <c:if test="${boardComment.boardCommentUserUid eq loginUser.userUid}">
         <div class="commentFuncDiv">
             <div id="showFormDeleteFuncDiv_${boardComment.boardCommentUid}">
                 <span onclick="showBoardCommentForm('${boardComment.boardCommentUid}')">수정</span>
@@ -19,6 +21,7 @@
                 <span onclick="cancelBoardComment('${boardComment.boardCommentUid}')">취소</span>
             </div>
         </div>
+        </c:if>
         <div id="commentContentsDiv_${boardComment.boardCommentUid}" class="commentContentsDiv">${boardComment.boardCommentContents}</div>
     </div>
 </c:forEach>

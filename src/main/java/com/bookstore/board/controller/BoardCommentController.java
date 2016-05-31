@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
 
 @Controller
 public class BoardCommentController {
@@ -25,6 +24,7 @@ public class BoardCommentController {
     @RequestMapping(value = "/boardComments/{boardUid}", method = RequestMethod.GET)
     public String getBoardComments(@PathVariable int boardUid, Model model) {
         model.addAttribute("boardComments", boardCommentService.getBoardCommentsByBoardUid(boardUid));
+        model.addAttribute("loginUser", CurrentUser.getCurrentUser());
         return "board/board_comments";
     }
 
